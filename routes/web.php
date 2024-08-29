@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LivreController;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -17,10 +19,16 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [LivreController::class, 'index']) ->name('index');
+// Route::get('/', [HomeController::class, 'index']) ->name('index');
 
-Route::get('/show', [LivreController::class, 'show'])->name('show');
+Route::get('/', [HomeController::class, 'home']) ->name('home');
+
+Route::get('/show_book/{livre}', [LivreController::class, 'show'])->name('show_book');
 
 Route::get('{/addbook', [LivreController::class, 'addBook'])->name('addbook');
 
 Route::post('/book/register', [LivreController::class, 'register'])->name('book.register');
+
+Route::get('/category_loads', [LivreController::class, 'category_loads'])->name('category_loads');
+
+Route::post('/add_category', [LivreController::class, 'add_category'])->name('add_category');

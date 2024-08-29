@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Author;
+use App\Models\Category;
 use App\Models\Livre;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,19 +15,21 @@ class Livre extends Model
 
     protected $fillable = [
         'title',
-        'author_id',
         'category_id',
+        'author_name',    
         'description',  
+        'book_img',  
+
     ];
-    protected $with=['livre'];
+    protected $with=['category', 'author'];
 
     public function author(): BelongsTo
     {
         return $this ->belongsTo(Author::class);
     }
 
-    public function livres(): BelongsTo 
+    public function category(): BelongsTo 
     {
-        return $this ->belongsTo(Livre::class);
+        return $this ->belongsTo(Category::class);
     }
 }

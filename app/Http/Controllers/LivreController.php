@@ -16,56 +16,68 @@ class LivreController extends Controller
        return view('livres.index');
     }
 
-    public function show(Livre $livre): view
+    public function show(Livre $livre)
     {
-       
-        return view('livres.show');
+        $livre = Livre::all();
+        return view('livres.show', compact('livre'));
     }
 
     public function addBook()
     {
         $categories = Category::all();
-        return view('livres.add-book',compact('categories'));
+        $authors = Author::all();
+        return view('livres.add-book',compact('categories', 'authors'));
     }
-    public function register(Request $request)
+    public function register(Request $request) 
     {
+        // Validation des données du formulaire
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'category_id' => 'required|int|max:255',
-            'author' => 'required|string|max:255',
-            'biography' => 'required|string',
+            'category_id' => 'required|integer|exists:categories,id', // Assurez-vous que la catégorie existe
+            'biography' => 'nullable|string', // La biographie peut être nullable
             'description' => 'required|string',
+            'author_name' => 'required|string',
             'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
-        
-        // Enregistrer l'auteur
-        $author = Author::create([
-            'name' => $validated['author'],
-            'biography' => $validated['biography'],
-        ]);
-        
-        // Gérer le fichier téléchargé
+    
+        // Trouver ou créer l'auteur
+        $author = Author::firstOrCreate(
+            ['name' => $validated['author_name']],
+            ['biography' => $validated['biography'] ?? '']
+        );
+    
+        // Gestion du fichier téléchargé
+        $path = null;
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $path = $file->store('thumbnails', 'public');
-        } else {
-            $path = null;
         }
-        
-        // Enregistrer le livre avec l'ID de l'auteur
+    
+        // Enregistrement du livre avec l'ID de l'auteur
         Livre::create([
             'title' => $validated['title'],
             'category_id' => $validated['category_id'],
-            'author_id' => $author->id,
             'description' => $validated['description'],
-            'thumbnail' => $path,
+            'author_name' => $author->id, // Utiliser l'ID de l'auteur
+            'book_img' => $path,
         ]);
     
         // Rediriger avec un message de succès
-        // die;
         return redirect()->route('index')->with('success', 'Livre ajouté avec succès !');
     }
+    
+    public function category_loads()
+    {
+      return view('admin.category');
+    }
 
+   public function add_category(Request $request)
+   {
+      $data = new Category;
+      $data ->name = $request ->category;
 
-   
+      $data->save();
+      
+      return redirect()->back()->with('message', 'New Category sucessfully added');
+   }
 }

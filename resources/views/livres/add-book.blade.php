@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ config('app.name') }}</title>
-<link rel="stylesheet" href="https://heroicons.com">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name') }}</title>
+    <link rel="stylesheet" href="https://heroicons.com">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        .readonly {
+            background-color: #c0c5cae7;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
-<body class="">
-<div class="flex mt-44  items-center flex-col gap-8 sm:mx-auto sm:w-full">
-    <form action="{{ route('book.register') }}" class="bg-red-800 blok mt-4 w-4/12 shadow-sm rounded-sm h-4/5"
-    method="post" enctype="multipart/form-data">
+<body>
+    <h1 class="flex item-center align-center font-bold text-2xl">Add a Book</h1>
 
+    <div class="flex flex-col items-center gap-8 mt-44 sm:mx-auto sm:w-full">
+        <form action="{{ route('book.register') }}" class="w-4/12 mt-4 bg-red-800 rounded-sm shadow-sm h-4/5" method="post" enctype="multipart/form-data">
+            @csrf
+            <label for="title" class="flex pt-4 pl-5 mt-2">Book Title :</label>
+            <input type="text" name="title" class="h-10 ml-16 rounded-md w-96">
+            @error('title')
+                {{ $message }}
+            @enderror
 
-    @csrf
-    <label for="title"  class="block  mt-2 pl-5 pt-4">Titre :</label>
-    
-    <input type="text" name="title" class=" rounded-md h-10 mt-4 w-96 ml-16 ">
-    
-@error('title')
-{{ $message }}
-@enderror
+            <label for="category" class="block pt-4 pl-5 mt-2">Category :</label>
+            <select name="category_id" class="h-10 ml-16 rounded-md w-96">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category')
+                {{ $message }}
+            @enderror
 
-<label for="category" class="block mt-2 pl-5 pt-4" >Categorie :</label>
-<select name="category_id" id="" class="ml-14">
-    @foreach ($categories as $category )
-        
-    <option value={{ $category->id }}>{{ $category->name }}</option>
-    @endforeach
-   
-</select>
-{{-- <input type="text" name="category" class="block  rounded-md h-10 mt-4 w-96 ml-14"> --}}
+            <label for="author" class="block pt-4 pl-5 mt-2">Author name :</label>
+            <input list="authors" id="author" name="author_name" class="block h-10 mt-4 rounded-md w-96 ml-14">
 
-@error('category')
-    {{ $message }}
-@enderror
+            <datalist id="authors">
+                @foreach($authors as $author)
+                    <option value="{{ $author->name }}">
+                @endforeach
+            </datalist>
 
-<label for="author" class="block mt-2 pl-5 pt-4">Auteur :</label>
+            <label for="biography" class="block pt-4 pl-5 mt-2">Biography :</label>
+            <input type="text" id="biography" name="biography" class="block h-10 mt-4 rounded-md w-96 ml-14">
 
-<input type="text" name="author" class="block  rounded-md h-10 mt-4 w-96 ml-14" >
+            @error('author')
+                {{ $message }}
+            @enderror
 
-<label for="biography" class="block mt-2 pl-5 pt-4">Biographie :</label>
+            <label for="description" class="block pt-4 pl-5 mt-2">Description :</label>
+            @error('description')
+                {{ $message }}
+            @enderror
+            <input type="text" name="description" class="block h-10 mt-4 rounded-md w-96 ml-14">
 
-<input type="text" name="biography" class="block  rounded-md h-10 mt-4 w-96 ml-14" >
-@error('author')
-    {{ $message }}
-@enderror
+            <label for="vignette" class="block pt-4 pl-5 mt-2">Book Image :</label>
+            <input type="file" name="thumbnail" class="block h-10 mt-4 rounded-md w-96 ml-14">
+            @error('thumbnail')
+                {{ $message }}
+            @enderror
 
-<label for="description" class="block mt-2 pl-5 pt-4">Description :</label>
+            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-44 mt-10">Add</button>
+        </form>
+    </div>
 
-@error('description')
-    {{ $message }}
-@enderror
-        <input type="text" name="description" class="block  rounded-md h-10 mt-4 w-96 ml-14" >
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const authorInput = document.getElementById('author');
+            const biographyInput = document.getElementById('biography');
+            const authorsList = @json($authors->pluck('name'));
 
-        <label for="vignette" :value="$livre->thumbnail" class="block mt-2 pl-5 pt-4">image :</label>
-
-        <input type="file" name="thumbnail" type="file" placeholder="ajouter une" class="block  rounded-md h-10 mt-4 w-96 ml-14" >
-       
-        
-@error('thumbnail')
-{{ $message }}
-@enderror
-
-        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-44 mt-10">Ajouter</button>
-    
-    </form>
-
-        
-        {{-- <button  class="rounded-md bg-teal-600 block mt-10 mb-8 items-center h-8 w-32 justify-center text-center ml-44">Ajouter</button> --}}
-    </form>
-</div>
+            authorInput.addEventListener('input', function() {
+                const authorName = authorInput.value.trim();
+                
+                if (authorsList.includes(authorName)) {
+                    biographyInput.value = ""; // Clear the biography field
+                    biographyInput.setAttribute('readonly', true);
+                    biographyInput.classList.add('readonly');
+                } else {
+                    biographyInput.removeAttribute('readonly');
+                    biographyInput.classList.remove('readonly');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
