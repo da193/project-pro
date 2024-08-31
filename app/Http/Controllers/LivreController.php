@@ -80,4 +80,16 @@ class LivreController extends Controller
       
       return redirect()->back()->with('message', 'New Category sucessfully added');
    }
+
+   public function showCat()
+    {
+        $categories = Category::all(); // Récupère toutes les catégories
+        return view('home.show-cat', compact('categories'));
+    }
+
+    public function showBook($id)
+    {
+        $category = Category::with('livres')->findOrFail($id); // Récupère la catégorie avec ses livres
+        return view('home.showcatBook', compact('category'));
+    }
 }

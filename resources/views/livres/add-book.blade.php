@@ -16,18 +16,22 @@
     </style>
 </head>
 <body>
-    <h1 class="flex item-center align-center font-bold text-2xl">Add a Book</h1>
+    <h1 class="flex text-center text-4xl items-center justify-center pt-20 text-green-900 font-bold">Add a Book</h1>
 
-    <div class="flex flex-col items-center gap-8 mt-44 sm:mx-auto sm:w-full">
+    <div class="flex flex-col items-center gap-8 mt-12 sm:mx-auto sm:w-full">
         <form action="{{ route('book.register') }}" class="w-4/12 mt-4 bg-red-800 rounded-sm shadow-sm h-4/5" method="post" enctype="multipart/form-data">
+
             @csrf
-            <label for="title" class="flex pt-4 pl-5 mt-2">Book Title :</label>
+            <div>
+
+            
+            <label for="title" class="inline-block pt-4 pl-5 mt-2 w-48">Book Title :</label>
             <input type="text" name="title" class="h-10 ml-16 rounded-md w-96">
             @error('title')
                 {{ $message }}
             @enderror
 
-            <label for="category" class="block pt-4 pl-5 mt-2">Category :</label>
+            <label for="category" class=" inline-block pt-4 pl-5 mt-2">Category :</label>
             <select name="category_id" class="h-10 ml-16 rounded-md w-96">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -37,8 +41,8 @@
                 {{ $message }}
             @enderror
 
-            <label for="author" class="block pt-4 pl-5 mt-2">Author name :</label>
-            <input list="authors" id="author" name="author_name" class="block h-10 mt-4 rounded-md w-96 ml-14">
+            <label for="author" class="inline-block pt-4 pl-5 mt-2">Author name :</label>
+            <input list="authors" id="author" name="author_name" class=" h-10 mt-4 rounded-md w-96 ml-14">
 
             <datalist id="authors">
                 @foreach($authors as $author)
@@ -46,22 +50,24 @@
                 @endforeach
             </datalist>
 
-            <label for="biography" class="block pt-4 pl-5 mt-2">Biography :</label>
+            <label for="biography" class="inline-block pt-4 pl-5 mt-2">Biography :</label>
             <input type="text" id="biography" name="biography" class="block h-10 mt-4 rounded-md w-96 ml-14">
 
             @error('author')
                 {{ $message }}
             @enderror
 
-            <label for="description" class="block pt-4 pl-5 mt-2">Description :</label>
+            <label for="description" class="inline-block pt-4 pl-5 mt-2">Description :</label>
             @error('description')
                 {{ $message }}
             @enderror
             <input type="text" name="description" class="block h-10 mt-4 rounded-md w-96 ml-14">
+             
+            {{-- name="thumbnail" type="file" label="Vignette" :value="$post->thumbnail"/> --}}
 
-            <label for="vignette" class="block pt-4 pl-5 mt-2">Book Image :</label>
-            <input type="file" name="thumbnail" class="block h-10 mt-4 rounded-md w-96 ml-14">
-            @error('thumbnail')
+            <label for="vignette" class="inline-block pt-4 pl-5 mt-2">Book Image :</label>
+            <input type="file" name="thumbnails" class="block h-10 mt-4 rounded-md w-96 ml-14">
+            @error('thumbnails')
                 {{ $message }}
             @enderror
 

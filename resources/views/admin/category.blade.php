@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ config('app.name') }}</title>
 <link rel="stylesheet" href="https://heroicons.com">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stydxlesheet" href="https://rsms.me/inter/inter.css">
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class=" ">
@@ -21,16 +21,16 @@
               @endif
        </div>
 
-       <h1 class="flex text-center text-4xl items-center justify-center pt-36 text-green-900 font-bold">Add a category</h1>
+       <h1 class="flex text-center text-4xl items-center justify-center pt-10 text-green-900 font-bold">Add a category</h1>
 
-       <div class=" flex align-center m-auto pt-12 justify-center">
+       <div class=" flex align-center m-auto pt-8 justify-center">
        <form action="{{ route('add_category') }}" method="Post">
         @csrf
 
-        <label class="px-6" for="category">Categoory Name :</label>
-        <input class="bg-blue-300 px-6 h-8 w-auto rounded-md" type="text" name="category" required>
+        <label class="px-2" for="category">Categoory Name</label>
+        <input class="bg-blue-300 px-2 h-8 w-auto rounded-md" type="text" name="category" required>
         
-        <input class="block rounded-md ml-20 h-9 w-36 mt-10 bg-emerald-900" type="submit" value="Add a category">
+        <input class=" rounded-md ml-4 h-9 w-36 mt-10 bg-emerald-900" type="submit" value="Add a category">
        </form>
 
         <div>
