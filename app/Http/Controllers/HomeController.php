@@ -26,10 +26,15 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $search = $request ->search;
-       $livre = Livre::where('title', 'LIKE', '%'.$search.'%')->orWhere('auther_name', 'LIKE', '%'.$search.'%')->get();
+       $livre = Livre::where('title', 'LIKE', '%'.$search.'%')->orWhere('author_name', 'LIKE', '%'.$search.'%')->get();
        return view('home.explore', compact('livre'));
 
     }
     
+    public function details($id)
+    {
+        $livre = Livre::findOrFail($id); 
+        return view('home.details', compact('livre'));
+    }
    
 }

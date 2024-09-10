@@ -18,12 +18,7 @@
         </svg>
     
     </a>
-
-        
-      </div>
-        
-       
-
+    
         {{-- from navigation --}}
         
         <nav class="items-center justify-between mx-auto ">
@@ -47,7 +42,7 @@
                         <a class="hover:text-blue-900" href="{{ route('categories') }}">Categories</a>
                     </li>
                     <li>
-                        <a class="hover:text-blue-900" href="#">Item Details</a>
+                        <a class="hover:text-blue-900" href="{{ route('details',['id' =>$livre->id]) }}">Item Details</a>
                     </li>
 
                     <li>
@@ -66,25 +61,29 @@
             
     </header>
 
-    <div class="container mx-auto p-8 max-w-4xl">
-        <h1 class="text-3xl font-bold mb-6">Books in {{ $category->name }}</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-            
-            @forelse($category->livres as $livre)
-            <div class="p-4 bg-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105">
-                <img class="h-10 w-20" src="thumbnails/{{ $livre->book_img }}">
-                <h2 class="text-xl font-semibold mb-2">{{ $livre->title }}</h2>
-                <p class="text-sm text-gray-600 mb-1">by {{ $livre->author_name }}</p>
-                <p class="text-sm text-gray-600">{{ $livre->description }}</p>
-            </div>
-            @empty
-                <p class="text-gray-500 col-span-full">No books found in this category.</p>
-            @endforelse
-        </div>
-        <a href="{{ route('categories') }}" class="block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition-colors mt-6">
-            Back to Categories
-        </a>
+    
+    {{-- details --}}
+
+    <div class="container mx-auto text-center">
+        <h2 class="mb-4 text-2xl font-bold text-center text-gray-300 py-6">Book Details</h2>
+
     </div>
+</header>
+<main class="container mx-auto mt-8 p-4 bg-white shadow-md rounded-lg">
+    <img class="object-cover w-full h-48 lg:w-1/3" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}"> 
+
+    <h2 class="text-2xl font-semibold mb-2">{{ $livre->title }}</h2>
+    <p class="text-gray-700 mb-2"><strong>Author :</strong> {{ $livre->author_name }}</p>
+    <p class="text-gray-700 mb-2"><strong>Category :</strong> {{ $livre->category->name }}</p>
+    <p class="text-gray-700 mb-4"><strong>Description :</strong> {{ $livre->description }}</p>
+    <p class="text-gray-700 mb-4"><strong>Biography :</strong> {{ $livre->biography }}</p>
+</main>
+<footer class="bg-gray-200 py-4 mt-8">
+    <div class="container mx-auto text-center">
+        <a href="{{ url('/') }}" class="text-blue-500 hover:underline">Retour à la page principale</a>
+    </div>
+</footer>
+
     
 </body>
 </html>

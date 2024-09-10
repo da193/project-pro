@@ -13,6 +13,7 @@
             background-color: #c0c5cae7;
             cursor: not-allowed;
         }
+        
     </style>
 </head>
 <body>

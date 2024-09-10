@@ -9,32 +9,67 @@
 <link rel="stydxlesheet" href="https://rsms.me/inter/inter.css">
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class=" ">
 
-       <div class="">
-              @if (session()-> has('message'))
-              <div class="bg-green-600">
+<style>
+      .transition-transform {
+            transition: transform 0.3s ease;
+        }
+        .transition-transform:hover {
+            transform: scale(1.05);
+        }
+        .transition-bg {
+            transition: background-color 0.3s ease;
+        }
+        .transition-bg:hover {
+            background-color: #2d6a4f;
+        }
+   </style>
 
-                     {{ session()->get('message') }} 
-                  <button type="button" class="close" >X</button>      
-              </div>
-              @endif
-       </div>
+body class="bg-gray-100 font-sans">
 
-       <h1 class="flex text-center text-4xl items-center justify-center pt-10 text-green-900 font-bold">Add a category</h1>
+    <header class="bg-green-900 text-white py-6">
+        <h1 class="text-center text-3xl font-semibold">Add a Category</h1>
+    </header>
 
-       <div class=" flex align-center m-auto pt-8 justify-center">
-       <form action="{{ route('add_category') }}" method="Post">
-        @csrf
-
-        <label class="px-2" for="category">Categoory Name</label>
-        <input class="bg-blue-300 px-2 h-8 w-auto rounded-md" type="text" name="category" required>
-        
-        <input class=" rounded-md ml-4 h-9 w-36 mt-10 bg-emerald-900" type="submit" value="Add a category">
-       </form>
-
-        <div>
+    <main class="container mx-auto p-6">
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+            <form action="{{ route('add_category') }}" method="POST" class="space-y-6">
+                @csrf
+                <div>
+                    <label class="block text-gray-700 text-lg font-medium mb-2" for="category">Category Name</label>
+                    <input id="category" name="category" type="text" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-blue-50 focus:outline-none focus:ring-2 focus:ring-green-500 transition-transform">
+                </div>
+                <input type="submit" value="Add Category"
+                    class="w-full px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-bg">
+            </form>
         </div>
-       </div>
+
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <table class="w-full table-auto">
+                <thead class="bg-green-100 text-green-800">
+                    <tr>
+                        <th class="px-4 py-2 text-left">Category Name</th>
+                        <th class="px-4 py-2 text-center">Delete</th>
+                        <th class="px-4 py-2 text-center">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($livre as $livre)
+                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                        <td class="px-4 py-2">{{ $livre->name }}</td>
+                        <td class="px-4 py-2 text-center">
+                            <button class="bg-red-600 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-red-700 transition-bg">Delete</button>
+                        </td>
+                        <td class="px-4 py-2 text-center">
+                            <button class="bg-blue-600 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-blue-700 transition-bg">Update</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
 </body>
 </html>

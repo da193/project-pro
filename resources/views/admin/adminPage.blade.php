@@ -12,6 +12,55 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gradient-to-r from-slate-900 to-slate-700">
+
+{{-- abstract --}}
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<div class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100 dark:bg-gray-900">
+    <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark:text-gray-200 dark:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between bg-gray-50 dark:bg-gray-900 shadow-md">
+        <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300 focus:outline-none focus:shadow-outline">Flowtrail UI</a>
+        <button class="md:hidden rounded-lg p-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:shadow-outline" @click="open = !open">
+          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+            <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-300 focus:bg-gray-300 transition-colors duration-300 focus:outline-none focus:shadow-outline" href="#">Home</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline"href="{{ route('category_page') }}">Categories</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline" href="#">Authors</a>
+        {{-- <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline" href="#">Contact</a> --}}
+        <div @click.away="open = false" class="relative" x-data="{ open: false }">
+          <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline">
+            <span>Books</span>
+            <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
+            <div class="px-2 py-2 bg-white rounded-md shadow dark:bg-gray-800">
+              <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline" href="{{ route('show_book') }}">Book options</a>
+              <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline" href="#">Add Books</a>
+              <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 transition-colors duration-300 focus:outline-none focus:shadow-outline" href="#">Link #3</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <a href="{{ route('home') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-blue-800 size-9">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+            
+        </svg>
+    
+    </a>
+   
+  </div>
+
+{{-- abstract --}}
+
+
     <header class="flex items-center justify-around gap-10 py-5  space-x-5 text-slate bg-gradient-to-r from-rose-100 to-teal-100 text-sky-800 ">
    <a href="{{ route('home') }}">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-blue-800 size-9">
@@ -34,17 +83,18 @@
                     <li>
                         <a class="hover:text-blue-900" href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="flex justify-between">
-                        <a class="hover:text-blue-900" href="{{ route('explore') }}">Explore</a>
-                        
                     
+                    <li class="relative flex items-center">
+                        <!-- Menu principal -->
+                        <a class="hover:text-blue-900" href="{{ route('show_book') }}">Books</a>      
+                                       
                     </li>
                     
                     <li>
-                        <a class="hover:text-blue-900" href="{{ route('categories') }}">Categories</a>
+                        <a class="hover:text-blue-900" href="{{ route('category_page') }}">Categories</a>
                     </li>
                     <li>
-                        <a class="hover:text-blue-900" href="#">Item Details</a>
+                        <a class="hover:text-blue-900" href="#">Authors</a>
                     </li>
 
                     <li>
@@ -54,11 +104,7 @@
                 </ul>
                
             </div>
-            <div class="flex items-center gap-6">
-                <ion-icon onclick="onToggleMenu(this)" 
-                          name="menu" class="text-3xl text-white cursor-pointer md:hidden">
-                  </ion-icon>
-            </div>
+            
         </nav>
             
     </header>
@@ -71,8 +117,6 @@
             background-position: center;
         }
     </style>
-
-    
     
      <!-- Background Section -->
      <div class="relative flex items-center justify-start h-screen bg-custom px-4">
@@ -155,7 +199,6 @@
             @foreach ($livre as $livre)
                 <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md lg:flex-row">
                     <img class="object-cover w-full h-48 lg:w-1/3" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}"> 
- 
 
                     <div class="flex-1 p-4">
                         <h4 class="text-xl font-semibold text-gray-800">{{ $livre->title }}</h4>

@@ -66,22 +66,22 @@ class LivreController extends Controller
         return redirect()->route('index')->with('success', 'Livre ajouté avec succès !');
     }
     
-    public function category_loads()
-    {
-      return view('admin.category');
-    }
+//     public function category_loads()
+//     {
+//       return view('admin.category');
+//     }
 
-   public function add_category(Request $request)
-   {
-      $data = new Category;
-      $data ->name = $request ->category;
+//    public function add_category(Request $request)
+//    {
+//       $data = new Category;
+//       $data ->name = $request ->category;
 
-      $data->save();
+//       $data->save();
       
-      return redirect()->back()->with('message', 'New Category sucessfully added');
-   }
+//       return redirect()->back()->with('message', 'New Category sucessfully added');
+//    }
 
-   public function showCat()
+   public function showCat() 
     {
         $categories = Category::all(); // Récupère toutes les catégories
         return view('home.show-cat', compact('categories'));
@@ -92,4 +92,7 @@ class LivreController extends Controller
         $category = Category::with('livres')->findOrFail($id); // Récupère la catégorie avec ses livres
         return view('home.showcatBook', compact('category'));
     }
+
+    
+
 }
