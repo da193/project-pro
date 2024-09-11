@@ -87,6 +87,10 @@
 
     {{-- hide message --}}
 
+    <div>
+        <a href="{{ route('adminpage') }}">Return</a>
+    </div>
+
 </body>
 
 </html>

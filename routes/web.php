@@ -26,8 +26,10 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'home']) ->name('home');
 
+// adding a book
+Route::get('/addbook', [LivreController::class, 'addbook'])->name('add_book');
 
-Route::get('{/addbook', [LivreController::class, 'addBook'])->name('addbook');
+Route::post('/book/register', [LivreController::class, 'register'])->name('book.register');
 
 // click and show category
 Route::get('{/show_cat', [LivreController::class, 'showCat'])->name('categories');
@@ -37,7 +39,6 @@ Route::get('/category/{id}', [LivreController::class, 'showBook'])->name('catego
 // book options of which the admn control in 
 Route::get('/show_book', [AdminController::class, 'show_book'])->name('show_book');
 
-Route::post('/book/register', [LivreController::class, 'register'])->name('book.register');
 
 Route::get('/category_loads', [LivreController::class, 'category_loads'])->name('category_loads');
 
@@ -58,14 +59,19 @@ Route::get('/details/{id}', [HomeController::class, 'details'])->name('details')
 
 Route::get('admin/login', [AdminController::class, 'showLoginForm'])->name('login');
 
-Route::post('admin/login', [AdminController::class, 'login'])->name('admin.page');
+// Route::post('admin/login', [AdminController::class, 'login'])->name('admin.page');
 
-Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
+// Route::post('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
 
 // add a category and showing up
 Route::get('/category_page', [AdminController::class, 'category_page'])->name('category_page');
 
 Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
+
+// delete and update a category
+Route::get('/delete_category/{id}', [AdminController::class, 'cat_delete'])->name('cat_delete');
+
 
 // delete and update a book in admin
 
@@ -74,3 +80,6 @@ Route::get('/delete_book/{id}', [AdminController::class, 'delete_book'])->name('
 Route::get('/edit_book/{id}', [AdminController::class, 'edit_book'])->name('edit_book');
 
 Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
+
+// student registration
+Route::get('/Register', [AdminController::class, 'register'])->name('register');

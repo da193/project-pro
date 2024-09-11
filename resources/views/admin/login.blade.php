@@ -44,6 +44,14 @@
             <div class="flex items-center justify-between">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
             </div>
+
+            <div class="flex items-center">
+                <input id="remember" name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded form-checkbox text-green-950 focus:ring-green-950">
+                <label for="remember" class="block ml-3 text-sm leading-6 text-gray-900">
+                Rester connecté
+                </label>
+                </div>
+                </div>
         </form>
     </div>
 

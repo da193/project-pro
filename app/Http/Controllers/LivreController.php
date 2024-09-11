@@ -22,12 +22,6 @@ class LivreController extends Controller
         return view('livres.show', compact('livre'));
     }
 
-    public function addBook()
-    {
-        $categories = Category::all();
-        $authors = Author::all();
-        return view('livres.add-book',compact('categories', 'authors'));
-    }
     public function register(Request $request) 
     {
         // Validation des données du formulaire
@@ -48,10 +42,11 @@ class LivreController extends Controller
     
         // Gestion du fichier téléchargé
         $path = null;
-        if ($request->hasFile('thumbnail')) {
-            $file = $request->file('thumbnail');
-            $path = $file->store('thumbnails', 'public');
+        if ($request->hasFile('book_img')) {
+            $file = $request->file('book_img');
+            $path = $file->store('book_img', 'public');
         }
+        
     
         // Enregistrement du livre avec l'ID de l'auteur
         Livre::create([
@@ -63,7 +58,7 @@ class LivreController extends Controller
         ]);
     
         // Rediriger avec un message de succès
-        return redirect()->route('index')->with('success', 'Livre ajouté avec succès !');
+        return redirect()->route('show_book')->with('success', 'Livre ajouté avec succès !');
     }
     
 //     public function category_loads()
@@ -94,5 +89,13 @@ class LivreController extends Controller
     }
 
     
+    public function addbook()
+    {
+        $categories = Category::all();
+        $authors = Author::all();
+        return view('admin.add-book' ,compact('categories', 'authors'));
 
+
+    }
+    
 }

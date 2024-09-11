@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Category;
 use App\Models\Livre;
 use Illuminate\Http\Request;
@@ -40,13 +41,19 @@ class AdminController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->intended('admin/dashboard');
         }
 
-        return Redirect::back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+        return back()->withErrors([
+            'email' => 'the informations does not correspond',
         ]);
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/admin/login');
     }
 
     public function category_page()
@@ -109,5 +116,29 @@ class AdminController extends Controller
 
 
         return redirect()->route('show_book');
+
+    }
+
+    public function addbook()
+    {
+        $categories = Category::all();
+        $authors = Author::all();
+        return view('admin.add-book' ,compact('categories', 'authors'));
+
+
+    }
+    
+    public function cat_delete($id)
+    {
+        $livre = Category::find($id);
+        $livre ->delete();
+
+        return redirect()->back()->with('message', 'Book 
+        deleted sucessfully');
+    }
+
+    public function register()
+    {
+        return view('user.preinscription');
     }
 }
