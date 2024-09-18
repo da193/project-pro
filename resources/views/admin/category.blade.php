@@ -25,32 +25,34 @@
         }
    </style>
 
-<body class="bg-gray-100 font-sans">
+<body class="font-sans bg-gray-100">
 
-    <header class="bg-green-900 text-white py-6">
-        <h1 class="text-center text-3xl font-semibold shadow-sm first-line:">Add a Category</h1>
+    <header class="fixed overflow-hidden w-full p-6 a text-2xl font-bold text-center text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-md shadow-md shadow-slate-950">
+        <h1 class="text-3xl font-semibold text-center shadow-sm first-line:">Add a Category</h1>
     </header>
 
-    <main class="container mx-auto p-6">
-        <div class="bg-white shadow-lg rounded-lg p-6 mb-8 items-end">
-            <form action="{{ route('add_category') }}" method="POST" class="space-y-6 items-center justify-center inline-block block">
+    <main class="container p-6 mx-auto ">
+        <div class="items-end p-6 mb-8 bg-white rounded-lg shadow-lg mt-24">
+            <form action="{{ route('add_category') }}" method="POST" class="items-center justify-center block inline-block space-y-6">
                 @csrf
                 <div>
-                    <label class="block text-gray-700 text-lg font-medium mb-2" for="category">Category Name</label>
+                    <label class="block mb-2 text-lg font-medium text-gray-700" for="category">Category Name</label>
                     <input id="category" name="category" type="text" required
-                        class="w-auto px-4 py-2 border border-gray-300 rounded-lg bg-blue-50 focus:outline-none focus:ring-2 focus:ring-green-500 transition-transform">
+                        class="w-auto px-4 py-2 transition-transform border border-gray-300 rounded-lg bg-blue-50 focus:outline-none focus:ring-2 focus:ring-green-500">
                 </div>
                 <input type="submit" value="Add Category"
-                    class="w-auto px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition-bg">
+                    class="w-auto px-4 py-2 text-white bg-green-600 rounded-lg cursor-pointer hover:bg-green-700 transition-bg">
             </form>
         </div>
 
-        <div class="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center">
-            <table class=" table-auto">
-                <thead class="bg-green-100 text-green-800 flex justify-between">
+        <div class="flex items-center justify-center p-6 bg-white rounded-lg shadow-lg">
+            <table class="table-auto ">
+
+
+                <thead class="flex items-center justify-between text-green-800 bg-green-100">
                     <tr>
                         <th class="px-4 py-2 text-left">Category Name</th>
-                        <th class="px-6 py-2 text-center ml-20 items-center">Actions</th>
+                        <th class=" flex justify-between items-center px-6 py-2 ml-20 text-center">Actions</th>
                         {{-- <th class="px-4 py-2 text-center">Update</th> --}}
                     </tr>
                 </thead>
@@ -58,11 +60,12 @@
                     @foreach ($livre as $livre)
                     <tr class="border-b border-gray-200 hover:bg-gray-50">
                         <td class="px-4 py-2">{{ $livre->name }}</td>
-                        <td class=" py-2 text-center">
-                            <a class="bg-red-600 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-red-700 transition-bg" href="{{ route('cat_delete', $livre->id) }}">Delete</a>
+                        <td class="py-2 text-center ">
+                            <a class="px-4 py-1 text-white bg-red-600 rounded-lg cursor-pointer hover:bg-red-700 transition-bg" href="{{ route('cat_delete', $livre->id) }}">Delete</a>
                         </td>
-                        <td class=" py-2 text-center">
-                            <button class="bg-blue-600 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-blue-700 transition-bg">Update</button>
+                        <td class="py-2 text-center ">
+                            <a class="px-4 py-1 w-20 h-8 text-white bg-blue-600 rounded-lg cursor-pointer hover:bg-gradient-to-t from-green-500 to-emerald-300 transition-bg" href="{{ route('edit_cat',$livre->id) }}">update</a>
+                            
                         </td>
                     </tr>
                     @endforeach
@@ -70,7 +73,7 @@
             </table>
         </div>
 
-        <a class="bg-orange-500" href="{{ route('adminpage') }}">Return</a>
+        <a class="flex items-center justify-center h-10 text-center bg-orange-500 rounded-md w-14" href="{{ route('adminpage') }}">Return</a>
     </main>
 
     

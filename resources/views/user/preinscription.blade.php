@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ config('app.name') }}</title>
+<title>{{ config('app.name') }} </title>
 <link rel="stylesheet" href="https://heroicons.com">
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-{{-- <header class=" justify-evenly flex items-center   shadow-black shadow-md fixed  w-full "> --}}
+{{-- <header clss=" justify-evenly flex items-center   shadow-black shadow-md fixed  w-full "> --}}
 </header>
 <body class="">
     
-    {{-- <img class="object-cover ml-10 rounded-full w-32 h-32  " src="/storage/img/logo.jpg " alt=""> --}}
+    <img class="object-cover ml-10  max-w-sm h-20 flex items-center justify-center pt-2 text-center align-middle  " src="/storage/img/logo.jpg " alt="">
     <h1 class="flex text-center align-middle items-center font-bold uppercase justify-center text-3xl ">Pre-inscription File</h1>
 
     <div class="pt-24">
@@ -22,7 +22,7 @@
   
 
 
-    <form action="{{ route('home') }}" method="POST" class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg ">
+    <form action="{{ route('dashboard') }}" method="POST" class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg ">
         @csrf
         <div class="mb-4">
             <label for="firstname" class="block text-gray-700 text-sm font-bold mb-2">Nom :</label>

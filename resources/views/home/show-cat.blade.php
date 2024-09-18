@@ -62,8 +62,8 @@
 
     {{-- show --}}
     <div class="container mx-auto p-8">
-        <h1 class="text-3xl font-bold mb-6">Categories</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <h1 clas="text-3xl font-bold mb-6">AllCategories</h1>
+        <div  class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-3/4  h-4/4 text-center justify-center ">
             @foreach($categories as $category)
                 <a href="{{ url('/category/' . $category->id) }}" class="block p-4 bg-blue-200 rounded-lg shadow hover:bg-blue-300 transition">
                     {{ $category->name }}
@@ -71,5 +71,7 @@
             @endforeach
         </div>
     </div>
+
+    
 </body>
 </html>

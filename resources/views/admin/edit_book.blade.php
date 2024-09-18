@@ -15,53 +15,63 @@
 <body>
 
     
-   <h1>Update Book</h1>
-
+    <body class="">
+        <header>
+            
+            <h1 class="py-5 mb-6 text-2xl font-bold text-center text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-black shadow-md fixed w-full overflow-y-hidden z-10 rounded-md">Update Book</h1>
+        </header>
+        
+ <div class="flex items-center justify-center min-h-screen bg-blue-200 ">
     
+ 
+        <div class="w-full max-w-lg p-8 mx-4 rounded-lg  bg-slate-500 shadow-black  mt-24">
+    
+            <form class="text-black " action="{{ route('update_book', $livre->id) }}" method="post" enctype="multipart/form-data">
+                @csrf
+    
+                <div class="mb-4">
+                    <label for="title" class="block mb-2 text-lg font-semibold text-gray-700">Book Title:</label>
+                    <input type="text" name="title" value="{{ $livre->title }}" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 ">
+                </div>
+    
+                <div class="mb-4">
+                    <label for="author_name" class="block mb-2 text-lg font-semibold text-gray-700">Author Name:</label>
+                    <input type="text" name="author_name" value="{{ $livre->author_name }}" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+    
+                <div class="mb-4">
+                    <label for="category" class="block mb-2 text-lg font-semibold text-gray-700">Category:</label>
+                    <select name="cat_name" id="cat_name" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="{{ $livre->category_id }}" selected>{{ $livre->category->name }}</option>
+                        @foreach ($category as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+    
+                <div class="mb-4">
+                    <label for="description" class="block mb-2 text-lg font-semibold text-gray-700">Description:</label>
+                    <textarea name="description" id="" cols="30" rows="5" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500">{{ $livre->description }}</textarea>
+                </div>
+    
+                <div class="mb-4">
+                    <label for="" class="block mb-2 text-lg font-semibold text-gray-700">Current Book Image:</label>
+                    <img class="object-cover w-full h-48 rounded-md shadow-md" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
+                </div>
+    
+                <div class="mb-4">
+                    <label for="book_img" class="block mb-2 text-lg font-semibold text-gray-700">Change Book Image:</label>
+                    <input type="file" name="book_img" class="w-full p-3 text-gray-700 border border-gray-300 rounded-md file:border-0 file:bg-slate-400 file:text-white file:rounded-md file:p-2 hover:file:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+    
+                <div>
+                    <button type="submit" class="py-2 text-white transition duration-150 ease-in-out rounded-md shadow-md bg-slate-800 w-28 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 justify-center items-center shadow-slate-900 flex">
+                        Update Book
+                    </button>
+                </div>
 
-    <div>
-        <form action="{{ route('update_book', $livre->id) }}" method="Post" enctype="multipart/form-data">
-            @csrf
-            <div>
-                <label for="title">Book Title </label>
-                <input type="text" name="title" value="{{ $livre ->title }}">
-            </div>
-            <div>
-                <label for="name">Author Name </label>
-                <input type="text" name="author_name" value="{{ $livre ->author_name }}">
-            </div>
-            <div>
-                <label for="category">Category </label>
-                <select name="category" id="">
-                    <option value={{ "$livre->category_id" }}>{{ $livre->category->name }}</option>
-                    @foreach ($category as $category)
-                        
-                    <option value="{{ $category->id  }}">{{ $category->name  }}</option>
-                    @endforeach
-                </select>
-                
-            </div>
-            <div>
-                <label for="description">Description </label>
-                <textarea name="description" id="" cols="30" rows="10">
-                    {{ $livre ->description }}
-                </textarea>
-            </div>
-            <div>
-                <label for="">Curent Book image </label>
-                <img  class="object-cover w-full h-48 lg:w-1/3" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
-            </div>
-            <div>
-                <label for="">Change Book Image</label>
-                <input type="file" name="book_img">
-            </div>
-
-
-            <div>
-                <input type="submit" value="Update Book">
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-    
-</body>
+    </body>
 </html>

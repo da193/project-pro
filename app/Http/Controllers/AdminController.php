@@ -96,7 +96,7 @@ class AdminController extends Controller
         $livre = Livre::find($id);
         $livre ->title = $request->title;
         $livre ->author_name = $request->author_name;
-        $livre ->category_id = $request->category;
+        $livre ->category_id = $request->cat_name;
         $livre ->description = $request->description;
         $livre ->book_img = $request->book_img;
         // $book_img ->book_img = $request->book_img;
@@ -135,6 +135,22 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Book 
         deleted sucessfully');
+    }
+
+    public function edit_cat($id)
+    {
+        $livre = Category::find($id);
+        return view('admin.edit_cat', compact('livre'));
+
+    }
+
+    public function update_cat(Request $request, $id)
+    {
+        $livre = Category::find($id);
+        // dd($livre);
+        $livre ->name = $request->cat_name;
+         $livre -> save();
+         return redirect()->route('category_page')->with('message', 'Category updated successfully');
     }
 
     public function register()

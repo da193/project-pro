@@ -1,76 +1,52 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="https://heroicons.com">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        .readonly {
-            background-color: #c0c5cae7;
-            cursor: not-allowed;
-        }
-    </style>
-</head>
-<body>
-      <div>
-        <form method="POST" action="">
-            <label for="firstname">Nom :</label>
-            <input type="text" name="name" id="name" autocomplete="off">
-            <label for="lastname">Prenom :</label>
-            <input type="text" name="lastname" id="lastname" autocomplete="off">
-            <label for="date-and-place-of-birth">Date et Lieu de Naissance :</label>
-      
-            <input type="date" name="date-and-place-of-birth" id="date-and-place-of-birth" autocomplete="off">
-      
-            <input type="text" name="place of birth" id="lastname" autocomplete="off">
-            <label for="address"> Addresse:</label>
-            <input type="text" name="address" id="address" autocomplete="off">
-            
-            
-            <label for="contact">Contact :</label>
-            <input type="text" name="contact" id="contact" autocomplete="off">
-            
-            
-            <label for="email">E-MAIL:</label>
-            <input type="text" name="contact" id="contact" autocomplete="off" placeholder=" nom@gmail.com">
-            
-            
-            <label for="telephone">Téléphone :</label>
-            <input type="text" name="contact" id="contact" autocomplete="off" placeholder=" nom@gmail.com">
-            
-            
-            <label for="cni-of-parent">CNI Parent :</label>
-            <input type="text" name="cni-of-parent" id="cni-of-parent" autocomplete="off">
-            <br>
-            <br>
-            <label for="sex">Sexe :</label>
-            <input type="radio" name="sex" value="Masculin" id="sex" autocomplete="off">Masculin
-          
-            <input type="radio" name="sex" value="Féminin" id="sex" autocomplete="off">Féminin
-            
-            <label for="School-level"> Niveau Scolaire:</label>
-           
-            <input type="checkbox" name=" BEPC" value="BEPC" autocomplete="off">
-            <label for="BEPC">BEPC</label>
-           
-            <input type="checkbox" name=" PROBATOIRE" value="PROBATOIRE" autocomplete="off">
-            <label for="Probatory">Probatoire</label>
-            
-            <input type="checkbox" name="BAC" value="BAC" autocomplete="off">
-            <label for="bac">BAC</label>
-            
-            <input type="checkbox" name="AUTRES" value="AUTRES" autocomplete="off">
-            <label for="bac">AUTRES</label>
-            
-             
-     </form>
+<x-guest-layout>
+    <form method="POST" action="{{ route('adminpage') }}">
+        @csrf
 
-      </div>
-       <button >Inscription</button>
+        <!-- Name -->
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
 
-</body>
-</html>
+        <!-- Email Address -->
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                            type="password"
+                            name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
+
+            <x-primary-button class="ms-4">
+                {{ __('Register') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

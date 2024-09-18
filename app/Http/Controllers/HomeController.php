@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function dash()
+    {
+        return view('home.dashboard');
+    }
+
     public function home()
     {
         $livre =Livre::all();
@@ -36,5 +41,6 @@ class HomeController extends Controller
         $livre = Livre::findOrFail($id); 
         return view('home.details', compact('livre'));
     }
+   
    
 }
