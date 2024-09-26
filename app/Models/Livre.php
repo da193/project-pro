@@ -18,7 +18,8 @@ class Livre extends Model
         'category_id',
         'author_name',    
         'description',  
-        'book_img',  
+        'book_img',
+        'file_path',  
 
     ];
     protected $with=['category', 'author'];

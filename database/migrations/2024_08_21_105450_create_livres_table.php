@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('category_id') ->constrained()->cascadeOnDelete();
             $table->string('description');
             $table->string('book_img');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

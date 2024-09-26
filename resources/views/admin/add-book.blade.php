@@ -37,6 +37,15 @@
         <h1 class="text-2xl font-bold text-gray-800">Add a Book</h1>
     </header>
 
+    @if ($errors->any())
+    <div class="mb-4">
+        <ul class="list-disc pl-5 text-red-600">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="flex items-center justify-center min-h-screen ">
         
     <main class="flex items-center justify-center w-full max-w-lg p-4 mt-4">
@@ -96,6 +105,14 @@
                 <div class="mb-4">
                     <label for="thumbnails" class="block mb-2 text-lg font-semibold text-gray-700">Book Image :</label>
                     <input type="file" name="book_img" id="thumbnails" class="w-full p-3 text-gray-700 border border-gray-300 rounded-md file:border-0 file:bg-purple-600 file:text-white file:rounded-md file:p-2 hover:file:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    @error('thumbnails')
+                        <div class="mt-2 text-sm text-red-500">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label for="thumbnails" class="block mb-2 text-lg font-semibold text-gray-700">Book content :</label>
+                    {{-- <input type="file" name="book_img" id="thumbnails" class="w-full p-3 text-gray-700 border border-gray-300 rounded-md file:border-0 file:bg-purple-600 file:text-white file:rounded-md file:p-2 hover:file:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"> --}}
+                    <input type="file" id="file_path" name="file_path" class="border rounded p-2 w-full" accept=".pdf,.epub,.txt" required>
                     @error('thumbnails')
                         <div class="mt-2 text-sm text-red-500">{{ $message }}</div>
                     @enderror

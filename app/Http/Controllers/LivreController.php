@@ -32,8 +32,12 @@ class LivreController extends Controller
             'description' => 'required|string',
             'author_name' => 'required|string',
             'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'file_path' => 'required|file|mimes:pdf,epub,txt|max:10000',
         ]);
-    
+        
+        $filePath = $request->file('file_path')->store('Books', 'public');
+        // nGkPbmBG5bFMGIOraVkT87bTlT2HaIx9LSYBRMtz
+        
         // Trouver ou créer l'auteur
         $author = Author::firstOrCreate(
             ['name' => $validated['author_name']],
@@ -46,6 +50,8 @@ class LivreController extends Controller
             $file = $request->file('book_img');
             $path = $file->store('book_img', 'public');
         }
+        dump($path);
+        dump($path);
         
     
         // Enregistrement du livre avec l'ID de l'auteur
@@ -55,12 +61,25 @@ class LivreController extends Controller
             'description' => $validated['description'],
             'author_name' => $author->id, // Utiliser l'ID de l'auteur
             'book_img' => $path,
+            'file_path' => $filePath,
         ]);
     
         // Rediriger avec un message de succès
         return redirect()->route('show_book')->with('success', 'Livre ajouté avec succès !');
     }
     
+
+    public function read($id)
+{
+    $livre = Livre::findOrFail($id);
+    // dd($livre->file_path);
+    return response()->file("storage/$livre->file_path");
+}
+
+
+// <img class="object-cover w-full h-48 lg:w-1/3" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
+
+
 //     public function category_loads()
 //     {
 //       return view('admin.category');

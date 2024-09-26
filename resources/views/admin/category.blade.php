@@ -49,11 +49,11 @@
             <table class="table-auto ">
 
 
-                <thead class="flex items-center justify-between text-green-800 bg-green-100">
+                <thead class="flex inlline items-center justify-between text-green-800 bg-green-100">
                     <tr>
                         <th class="px-4 py-2 text-left">Category Name</th>
                         <th class=" flex justify-between items-center px-6 py-2 ml-20 text-center">Actions</th>
-                        {{-- <th class="px-4 py-2 text-center">Update</th> --}}
+                        {{-- <th class="ùl,px-4 py-2 text-center">Update</th> --}}
                     </tr>
                 </thead>
                 <tbody>

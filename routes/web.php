@@ -89,8 +89,18 @@ Route::get('/edit_book/{id}', [AdminController::class, 'edit_book'])->name('edit
 Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
 
 // student registration
-// Route::get('/Register', [AdminController::class, 'register'])->name('register');
+// Route::get('/pre-inscription', [AdminController::class, 'register'])->name('register');
 
 
 // my principal dashboard page that connect to all the other page and the first view page
 Route::get('/', [HomeController::class, 'dash']) ->name('Home');
+
+
+// getting the parameters of the admin panel to see the settings
+
+Route::get('/profile', [ProfileController::class, 'profil']) ->name('profil');
+Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+
+// get the book file
+Route::get('livres/{id}/read', [LivreController::class, 'read'])->name('livres.read');
