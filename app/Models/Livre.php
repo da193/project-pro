@@ -16,7 +16,7 @@ class Livre extends Model
     protected $fillable = [
         'title',
         'category_id',
-        'author_name',    
+        'author_id',    
         'description',  
         'book_img',
         'file_path',  

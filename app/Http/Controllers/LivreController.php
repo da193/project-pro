@@ -59,7 +59,7 @@ class LivreController extends Controller
             'title' => $validated['title'],
             'category_id' => $validated['category_id'],
             'description' => $validated['description'],
-            'author_name' => $author->id, // Utiliser l'ID de l'auteur
+            'author_id' => $author->id, // Utiliser l'ID de l'auteur
             'book_img' => $path,
             'file_path' => $filePath,
         ]);

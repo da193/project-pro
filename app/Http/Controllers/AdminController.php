@@ -153,7 +153,7 @@ class AdminController extends Controller
          return redirect()->route('category_page')->with('message', 'Category updated successfully');
     }
 
-    public function register()
+    public function inscription()
     {
         return view('user.preinscription');
     }

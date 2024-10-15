@@ -11,67 +11,181 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<header class="h-20 pt-5 pl-4 text-red-600 rounded-md shadow-md shadow-black ">
+<header class="h-20 text-center pl-4 bg-gradient-to-t from-red-500 to-red-300 rounded-md shadow-md shadow-black ">
 
-    <div class="flex items-center justify-between text-center">
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="pl-8 text-white size-9">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-
-            </svg>
+    
+    <div class="flex items-center justify-between px-4 ">
+        <div class="flex items-center">
+            <!-- Logo -->
+            <img class="object-cover h-auto w-auto md:h-20 md:w-20 ml-4 py-3" src="/storage/img/logo.jpg" alt="Logo">
+            <span class="text-white gap-4">ESCa Biblio</span>
+            <!-- Icone -->
+            
         </div>
 
-        <nav class="items-center justify-between">
-            <div>
-                <ul class="flex md:flex-row flex-col md:items-centber md:gap-[4vw] gap-6 pr-8 ">
-                    <li>
-                        <a href="">About</a>
-                    </li>
-                    <li>
-                        <a href="">contact us</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Navigation -->
+        <nav>
+            <ul class="flex flex-col md:flex-row items-center md:gap-8 gap-4 pr-6 text-white text-lg font-semibold">
+                <li>
+                    <a href="#" class="hover:text-gray-300 transition duration-200">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:text-gray-300 transition duration-200">Contact</a>
+                </li>
+            </ul>
         </nav>
-
     </div>
+
 </header>
 
-<body class="">
+<!-- Styles et media queries -->
+<style>
+    @media (max-width: 768px) {
+        header {
+            padding: 1rem; /* Ajuste les espacements */
+        }
+        img {
+            width: 64px; /* Réduit la taille du logo */
+            height: 64px;
+        }
+        svg {
+            display: none; /* Masque l'icône sur les petits écrans */
+        }
+        nav ul {
+            text-align: center; /* Centrer la navigation sur petits écrans */
+        }
+    }
+
+    @media (max-width: 640px) {
+        header {
+            height: auto; /* Permet une hauteur plus flexible */
+        }
+        nav ul {
+            gap: 2rem; /* Ajuste l'espacement des liens pour petits écrans */
+        }
+    }
+
+    @media (min-width: 769px) {
+        nav ul {
+            gap: 4vw; /* Espace dynamique basé sur la largeur de l'écran */
+        }
+    }
+</style>
+
+
+<body class="overflow-hidde">
 
     <div
-        class="relative block h-screen px-4 pt-8 pl-6 mx-6 mt-3 mb-3 rounded-md bg-custom bg-gradient-to-bl from-cyan-400 to-blue-800 shadow-blue-800 shadow-">
+    
+        class="relative block h-screen px-4 pt-8  mx- mt-3 mb-3 rounded-md  shadow-lg bg-gradient-to-t from-rose-400 to-red-200">
 
-        <!-- Overlay for better text visibility -->
-        {{-- <div class="absolute inset-0 mx-5 my- bg-opacity-50 rounded-md">
+        <div class="bg-cover rounded-md bg-center bg-no-repeat h-full md:h-80 lg:h-96 w-full" style="background-image: url('/storage/img/2.jpg');">
 
-        </div> --}}
-
-        <div class="relative z-10 flex justify-between items-center px-8 w-ful py-14 mx-aut max-w-7xl mb-[10rem]">
+        <div
+            class="relative z-10 flex flex-col-reverse md:flex-row justify-between items-center px-8 py-14 max-w-7xl mx-auto mb-10">
             <div class="w-full md:w-1/2 lg:w-2/5">
-                <h2 class="mb-5 text-4xl font-bold md:text-4xl text-amber-400">Knowledge is Power</h2>
-                <p class="mb-6 text-sm text-white md:text-base">Discover the best books to expand your mind and enhance
-                    your understanding of the world.</p>
-
-                {{-- <a href="your-link-here.html" class="inline-block px-6 py-3 text-lg font-semibold bg-blue-500 rounded-lg hover:bg-blue-600">Explore Top Books</a> --}}
+                <h2 class="mb-5  text-4xl font-bold text-black uppercase">Le savoir, c'est le pouvoir</h2>
+                <p class="mb-6 text-sm text-white md:text-base">Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque universitaire.</p>
             </div>
 
-            <img class="object-cover h-auto max-w-sm mr-12 lg:w-4/3" src="/storage/img/book.png" alt="">
-
+            {{-- <img class="object-cover h-auto max-w-sm mr-0 md:mr-12 lg:w-4/5" src="/storage/img/tt.jpg"
+                alt="Livre illustratif"> --}}
         </div>
-        <div class="flex">
+
+
+        <div class="marquee overflow-hidden text-red-900 p-4 rounded-lg  relative">
+            <span
+                class="marquee-content inline-block animate-marquee opacity-0 transition-opacity duration-500 pb-8">Bienvenue
+                à la bibliothèque numérique ! Apprenez, explorez, découvrez !</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-start justify-start space-y-4 sm:space-y-0 sm:space-x-4 mt-8 ml-4">
             <a href="{{ route('regist') }}"
-                class="flex items-center justify-center h-10 ml-16 font-bold text-center text-white bg-gradient-to-t from-pink-700 to-pink-400 rounded-lg w-28">admin</a>
+                class="flex items-center justify-center h-12 px-4 font-bold text-center text-white bg-gradient-to-t from-pink-700 to-pink-400 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+                Admin
+            </a>
 
-            <a href="{{ route('home') }}"
-                class="flex items-center justify-center h-10 ml-16 font-bold text-center text-white bg-gradient-to-t from-pink-700 to-pink-400 rounded-lg w-32">student</a>
-
+            <a href="{{ route('pre-inscription') }}"
+                class="flex items-center justify-center h-12 px-4 font-bold text-center text-white bg-gradient-to-t from-pink-700 to-pink-400 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+                Étudiant
+            </a>
         </div>
+
+
 
 
     </div>
+
+
+    </div>
+
+    <style>
+        @media (max-width: 768px) {
+            .h-screen {
+                height: auto;
+                /* Ajuste la hauteur sur mobile */
+            }
+        }
+    </style>
+
+    </div>
+
+{{-- style of the swaying word of the bords --}}
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+                opacity: 1;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+            .animate-marquee {
+                animation-duration: 25s;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .animate-marquee {
+                animation-duration: 30s;
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <script>
+        const marqueeContent = document.querySelector('.marquee-content');
+
+        window.addEventListener('load', () => {
+            marqueeContent.style.opacity = '1'; 
+        });
+
+        marqueeContent.addEventListener('animationiteration', () => {
+            marqueeContent.style.animation = 'none';
+            setTimeout(() => {
+                marqueeContent.style.animation = '';
+            }, 50);
+        });
+    </script>
+
 
 </body>
 
