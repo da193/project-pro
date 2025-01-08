@@ -76,25 +76,6 @@ class LivreController extends Controller
     return response()->file("storage/$livre->file_path");
 }
 
-
-// <img class="object-cover w-full h-48 lg:w-1/3" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
-
-
-//     public function category_loads()
-//     {
-//       return view('admin.category');
-//     }
-
-//    public function add_category(Request $request)
-//    {
-//       $data = new Category;
-//       $data ->name = $request ->category;
-
-//       $data->save();
-      
-//       return redirect()->back()->with('message', 'New Category sucessfully added');
-//    }
-
    public function showCat() 
     {
         $categories = Category::all(); // Récupère toutes les catégories
