@@ -11,6 +11,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+
 <header class="h-24 pl-4 text-center rounded-sm shadow-md bg-blue-900 shadow-blue-900">
 
     
@@ -36,10 +37,14 @@
         </nav>
     </div>
 
+
+   
+        
+      
 </header>
 
 <!-- Styles et media queries -->
-<style>
+{{-- <style>
     @media (max-width: 768px) {
         header {
             padding: 1rem; /* Ajuste les espacements */
@@ -70,27 +75,57 @@
             gap: 4vw; /* Espace dynamique basé sur la largeur de l'écran */
         }
     }
-</style>
+</style> --}}
 
 
 <body class="">
-    <div class=" block mx-auto mt-3 mb-3 rounded-md shadow-lg bg bg-gray-700 -gradient-to-t from-gray-800 to-gray-600">
 
-        <div class="w-full h-full bg-center bg-no-repeat  bg-cover rounded-md " >
-    
-            <div class="relative z-10 flex flex-col-reverse items-center justify-between px-8 mx-auto mb-10 md:flex-row py-14 max-w-7xl">
-                <div class="w-full md:w-1/2 lg:w-2/5">
-                    <h2 class="mb-5 text-4xl font-bold text-white uppercase">Le savoir, c'est le pouvoir</h2>
-                    <p class="mb-6 text-sm text-white md:text-base">Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque universitaire.</p>
-                </div>
-    
-                <img class="object-cover h-4/6 w-5/6 max-w-md  md:mr-12 lg:w-5/6" src="/storage/img/bo.png" alt="Livre illustratif">
-            </div>
+    <div class=" h-screen mt- bg-black">
+        <div class="flex items-center justify-between">
+        <div class="w-3/4 p-10 pt-40 md:flex-row">
+            <h1 class="text-6xl md:text-6xl font-bold text-yellow-500 pb-4 fon">Bienvenue</h1>
+            <span class="text-white pt-16 pb-4">Le savoir, c'est le pouvoir</span>
+            <p class="mt-5 text-lg md:text-xl text-white">Plongez dans un vaste éventail de ressources littéraires <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre bibliothèque  numérique.</p>
+            <button class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded">
+                Découvrir
+            </button>
         </div>
-
-        
+        <div class="w-2/3 pt-32">
+            <img src="/storage/img/lad.png" alt="Bibliothèque" class="object-cover h-full w-full">
+        </div>
+    
     </div>
-<div class="">
+    <div class="relative p-4 overflow-hidden text-yellow-500 rounded-lg marquee">
+        
+        <span
+            class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
+            à la bibliothèque numérique ! Apprenez, explorez, découvrez !
+        </span>
+     
+    </div>
+        
+    
+
+    {{-- <div class="mx-auto mt-3 mb-3 rounded-md shadow-lg bg-gray-700 relative overflow-hidden">
+        
+  <div class="rounded-md">
+      <div class="relative flex flex-col-reverse items-center justify-between px-8 mx-auto mb-10 md:flex-row py-14 max-w-7xl">
+          <div class="w-full md:w-1/2 lg:w-2/5">
+            <h2 class="mb-5 text-4xl font-bold text-white uppercase">Le savoir, c'est le pouvoir</h2>
+            <p class="mb-6 text-sm text-white md:text-base">Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque universitaire.</p>
+        </div>
+        <img  src="/storage/img/lad.png" alt="Livre illustratif">
+    </div>
+</div> --}}
+
+        {{-- <div class="flex flex-col items-start justify-start mt-8 ml-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 mb-20">
+            <a href="{{ route('regist') }}" class="text-white"> 
+                <!-- Ajoutez le texte ou le contenu que vous souhaitez ici -->
+            </a>
+        </div>
+    </div> --}}
+
+{{-- <div class="h">
     <div class="relative p-4 overflow-hidden text-blue-900 rounded-lg marquee">
         <span
             class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
@@ -110,7 +145,7 @@
                 Étudiant
             </a>
         </div>
-    </div>
+    </div> --}}
     
     <style>
         @media (max-width: 768px) {
@@ -149,14 +184,14 @@
             animation: marquee 20s linear infinite;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .animate-marquee {
                 animation-duration: 25s;
                 font-size: 1.2rem;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 580px) {
             .animate-marquee {
                 animation-duration: 30s;
                 font-size: 1rem;
