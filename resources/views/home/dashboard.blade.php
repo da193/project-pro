@@ -12,16 +12,18 @@
 </head>
 
 
-<header class="h-24 pl-4 text-center rounded-sm shadow-md bg-blue-900 shadow-blue-900">
+<header class="h-24 pl-4 text-center bg-blue-900 rounded-sm shadow-md md: shadow-blue-900">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    
+
     <div class="flex items-center justify-between px-4 ">
         <div class="flex items-center">
             <!-- Logo -->
-            <img class="object-cover w-auto h-auto py-3 ml-4 md:h-20 md:w-20" src="/storage/img/sup.png" alt="Logo">
+            <img class="object-cover w-auto h-auto py-3 ml-4 md:h-20 md:w-20 " src="/storage/img/sup.png"
+                alt="Logo">
             <span class="gap-5 text-white">ESCa Biblio</span>
             <!-- Icone -->
-            
+
         </div>
 
         <!-- Navigation -->
@@ -38,9 +40,9 @@
     </div>
 
 
-   
-        
-      
+
+
+
 </header>
 
 <!-- Styles et media queries -->
@@ -80,33 +82,79 @@
 
 <body class="">
 
-    <div class=" h-screen mt- bg-black">
+    {{-- <div class="h-screen bg-black mt-">
         <div class="flex items-center justify-between">
-        <div class="w-3/4 p-10 pt-40 md:flex-row">
-            <h1 class="text-6xl md:text-6xl font-bold text-yellow-500 pb-4 fon">Bienvenue</h1>
-            <span class="text-white pt-16 pb-4">Le savoir, c'est le pouvoir</span>
-            <p class="mt-5 text-lg md:text-xl text-white">Plongez dans un vaste éventail de ressources littéraires <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre bibliothèque  numérique.</p>
-            <button class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded">
-                Découvrir
-            </button>
-        </div>
-        <div class="w-2/3 pt-32">
-            <img src="/storage/img/lad.png" alt="Bibliothèque" class="object-cover h-full w-full">
-        </div>
-    
-    </div>
-    <div class="relative p-4 overflow-hidden text-yellow-500 rounded-lg marquee">
-        
-        <span
-            class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
-            à la bibliothèque numérique ! Apprenez, explorez, découvrez !
-        </span>
-     
-    </div>
-        
-    
+            <div class="w-3/4 p-10 pt-40 md:flex-row">
+                <h1 class="pb-4 text-6xl font-bold text-yellow-500 md:text-7xl ">Welcome To Daylibris</h1>
+                <span class="pt-16 pb-4 text-xl text-white">Le savoir, c'est le pouvoir</span>
+                <p class="mt-5 text-lg text-white md:text-xl">Plongez dans un vaste éventail de ressources littéraires
+                    <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
+                    bibliothèque numérique.</p>
 
-    {{-- <div class="mx-auto mt-3 mb-3 rounded-md shadow-lg bg-gray-700 relative overflow-hidden">
+                <button class="px-6 py-3 mt-8 font-semibold text-white bg-blue-500 rounded hover:bg-blue-700">
+                    Découvrir
+                </button>
+
+                <a href="{{ route('pre-inscription') }}"
+                    class="px-6 py-3 mt-12 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700 ">Inscription</a>
+
+            </div>
+            <div class="w-3/4 pt-10 pr-10">
+                <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full">
+            </div>
+        </div>
+
+
+
+        <div class="relative p-4 overflow-hidden text-yellow-500 rounded-lg marquee">
+
+            <span
+                class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
+                à la bibliothèque numérique ! Apprenez, explorez, découvrez !
+            </span>
+
+        </div>
+    </div> --}}
+
+    <div class="h-screen bg-black">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="w-full md:w-3/4 p-10 pt-40">
+                <h1 class="pb-4 text-5xl font-bold text-yellow-500 md:text-7xl">Welcome To Daylibris</h1>
+                <span class="pt-4 pb-4 text-lg text-white md:text-xl">Le savoir, c'est le pouvoir</span>
+                <p class="mt-5 text-base text-white md:text-lg">
+                    Plongez dans un vaste éventail de ressources littéraires
+                    <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
+                    bibliothèque numérique.
+                </p>
+    
+                <div class="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4">
+                    <button class="px-6 py-3 font-semibold text-white bg-blue-500 rounded hover:bg-blue-700">
+                        Découvrir
+                    </button>
+    
+                    <a href="{{ route('pre-inscription') }}"
+                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">
+                        Inscription
+                    </a>
+                </div>
+            </div>
+    
+            <div class="w-full md:w-3/4 pt-10 pr-10">
+                <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full rounded-lg">
+            </div>
+        </div>
+    
+        <div class="relative p-4 overflow-hidden text-yellow-500 rounded-lg marquee">
+            <span class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
+                à la bibliothèque numérique ! Apprenez, explorez, découvrez !
+            </span>
+        </div>
+    </div>m
+
+
+
+
+        {{-- <div class="relative mx-auto mt-3 mb-3 overflow-hidden bg-gray-700 rounded-md shadow-lg">
         
   <div class="rounded-md">
       <div class="relative flex flex-col-reverse items-center justify-between px-8 mx-auto mb-10 md:flex-row py-14 max-w-7xl">
@@ -118,14 +166,14 @@
     </div>
 </div> --}}
 
-        {{-- <div class="flex flex-col items-start justify-start mt-8 ml-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 mb-20">
+        {{-- <div class="flex flex-col items-start justify-start mt-8 mb-20 ml-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
             <a href="{{ route('regist') }}" class="text-white"> 
                 <!-- Ajoutez le texte ou le contenu que vous souhaitez ici -->
             </a>
         </div>
     </div> --}}
 
-{{-- <div class="h">
+        {{-- <div class="h">
     <div class="relative p-4 overflow-hidden text-blue-900 rounded-lg marquee">
         <span
             class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
@@ -133,6 +181,7 @@
         </span>
 
     </div>
+    
 
         <div class="flex flex-col items-start justify-start mt-8 ml-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
             <a href="{{ route('regist') }}"
@@ -146,19 +195,36 @@
             </a>
         </div>
     </div> --}}
-    
-    <style>
-        @media (max-width: 768px) {
-            .h-screen {
-                height: auto;
-                /* Ajuste la hauteur sur mobile */
+
+        {{-- queries style for different screens --}}
+        <style>
+            @media (max-width: 768px) {
+                section {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                img {
+                    width: 100%;
+                    max-width: 300px;
+                    /* Ajuste la taille de l'image sur mobile */
+                }
             }
-        }
-    </style>
+        </style>
+        {{-- queries style for different screens --}}
+
+        <style>
+            @media (max-width: 768px) {
+                .h-screen {
+                    height: auto;
+                    /* Ajuste la hauteur sur mobile */
+                }
+            }
+        </style>
 
     </div>
 
-{{-- style of the swaying word of the bords --}}
+    {{-- style of the swaying word of the bords --}}
     <style>
         @keyframes marquee {
             0% {
@@ -203,7 +269,7 @@
         const marqueeContent = document.querySelector('.marquee-content');
 
         window.addEventListener('load', () => {
-            marqueeContent.style.opacity = '1'; 
+            marqueeContent.style.opacity = '1';
         });
 
         marqueeContent.addEventListener('animationiteration', () => {
@@ -213,6 +279,7 @@
             }, 50);
         });
     </script>
+
 
 
 </body>

@@ -14,17 +14,18 @@
 {{-- <header clss=" justify-evenly flex items-center   shadow-black shadow-md fixed  w-full "> --}}
 </header>
 
-<body class="">
+<body class="bg-gray-900">
 
-    <img class="object-cover ml-10  max-w-sm h-20 flex items-center justify-center pt-2 text-center align-middle  "
-        src="/storage/img/logo.jpg " alt="">
-    <h1 class="flex text-center align-middle items-center font-bold uppercase justify-center text-3xl ">Fiche de
+    <img class="flex max-w-sm h-20 items-center justify-center pt-2 text-center align-middle  "
+        src="/storage/img/sup.png " alt="">
+
+    <h1 class="flex text-center align-middle items-center font-bold uppercase justify-center text-3xl text-amber-500">Fiche de
         pré-inscription</h1>
 
     <div class="pt-24">
 
         <form action="{{ route('dashboard') }}" method="POST"
-            class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg ">
+            class="max-w-lg mx-auto p-6 bg-white  rounded-lg shadow-md shadow-white">
             @csrf
             <div class="mb-4">
                 <label for="firstname" class="block text-gray-700 text-sm font-bold mb-2">Nom :</label>
