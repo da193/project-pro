@@ -12,11 +12,12 @@
 </head>
 
 
-<header class="h-24 pl-4 text-center bg-blue-900 rounded-sm shadow-md md: shadow-blue-900">
+<header class="h-24 pl-4 text-center bg- blue-900 rounded-sm shadow-md md: shadow-blue-900 bg-gradient-to-r from-red-300 to-red-400 mb-2 ">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 
     <div class="flex items-center justify-between px-4 ">
+
         <div class="flex items-center">
             <!-- Logo -->
             <img class="object-cover w-auto h-auto py-3 ml-4 md:h-20 md:w-20 " src="/storage/img/sup.png"
@@ -116,10 +117,10 @@
         </div>
     </div> --}}
 
-    <div class="h-screen bg-black">
+    <div class="h-screen bg-slate-600">
         <div class="flex flex-col md:flex-row items-center justify-between">
             <div class="w-full md:w-3/4 p-10 pt-40">
-                <h1 class="pb-4 text-5xl font-bold text-yellow-500 md:text-7xl">Welcome To Daylibris</h1>
+                <h1 class="pb-4 text-5xl font-bold text-yellow-400 md:text-7xl">Welcome To Daylibris</h1>
                 <span class="pt-4 pb-4 text-lg text-white md:text-xl">Le savoir, c'est le pouvoir</span>
                 <p class="mt-5 text-base text-white md:text-lg">
                     Plongez dans un vaste éventail de ressources littéraires
@@ -128,15 +129,20 @@
                 </p>
     
                 <div class="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4">
-                    <button class="px-6 py-3 font-semibold text-white bg-blue-500 rounded hover:bg-blue-700">
+                    {{-- <button class="px-6 py-3 font-semibold text-white bg-blue-500 rounded hover:bg-blue-700">
                         Découvrir
-                    </button>
+                    </button> --}}
     
+                    <a href="{{ route('regist') }}"
+                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">
+                        Inscription
+                    </a>
                     <a href="{{ route('pre-inscription') }}"
                         class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">
                         Inscription
                     </a>
                 </div>
+                
             </div>
     
             <div class="w-full md:w-3/4 pt-10 pr-10">
@@ -250,16 +256,16 @@
             animation: marquee 20s linear infinite;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 9000px) {
             .animate-marquee {
                 animation-duration: 25s;
                 font-size: 1.2rem;
             }
         }
 
-        @media (max-width: 580px) {
+        @media (max-width: 1000px) {
             .animate-marquee {
-                animation-duration: 30s;
+                animation-duration: 20s;
                 font-size: 1rem;
             }
         }

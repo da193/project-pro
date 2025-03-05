@@ -78,7 +78,7 @@ Route::post('/edit_category/{id}', [AdminController::class, 'update_cat'])->name
 
 
 // 
-Route::post('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
+Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
 
 // delete and update a book in admin
 
