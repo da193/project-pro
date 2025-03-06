@@ -11,40 +11,45 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-<header class="h-24 pl-4 text-center bg- blue-900 rounded-sm shadow-md md: shadow-blue-900 bg-gradient-to-r from-red-300 to-red-400 mb-2 ">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
+  
+<header @click.away="open = false" class=" h-24 pl-4 text-center bg- blue-900 rounded-sm shadow-md md: shadow-slate-600 bg-gradient-to-r from-red-300 to-red-400 mb-2 " x-data="{ open: false }">
+    
+    
 
     <div class="flex items-center justify-between px-4 ">
 
-        <div class="flex items-center">
+        <div class="flex items-center ">
             <!-- Logo -->
             <img class="object-cover w-auto h-auto py-3 ml-4 md:h-20 md:w-20 " src="/storage/img/sup.png"
                 alt="Logo">
-            <span class="gap-5 text-white">ESCa Biblio</span>
+            {{-- <span class="gap-5 text-white">ESCa Biblio</span> --}}
             <!-- Icone -->
 
         </div>
-
+        <button class="p-2 transition-colors duration-300 rounded-lg md:hidden hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:shadow-outline" @click="open = !open">
+            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+              <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+              <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+          <nav>
+              <ul class="flex flex-col items-center gap-4 pr-6 text-lg font-semibold text-white md:flex-row md:gap-8">
+                  <li>
+                      <a href="#" class="transition duration-200 hover:text-black">About</a>
+                  </li>
+                  <li>
+                      <a href="#" class="transition duration-200 hover:text-black">Contact</a>
+                  </li>
+              </ul>
+          </nav>
+      </div>
         <!-- Navigation -->
-        <nav>
-            <ul class="flex flex-col items-center gap-4 pr-6 text-lg font-semibold text-white md:flex-row md:gap-8">
-                <li>
-                    <a href="#" class="transition duration-200 hover:text-gray-300">About</a>
-                </li>
-                <li>
-                    <a href="#" class="transition duration-200 hover:text-gray-300">Contact</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 
 
 
-
-
-</header>
+</header> 
 
 <!-- Styles et media queries -->
 {{-- <style>
@@ -146,16 +151,16 @@
             </div>
     
             <div class="w-full md:w-3/4 pt-10 pr-10">
-                <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full rounded-lg">
+                <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full rounded-lg md:w-3/4">
             </div>
         </div>
     
-        <div class="relative p-4 overflow-hidden text-yellow-500 rounded-lg marquee">
+        <div class="relative p-4 overflow-hidden text-yellow-300 rounded-lg marquee">
             <span class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
                 à la bibliothèque numérique ! Apprenez, explorez, découvrez !
             </span>
         </div>
-    </div>m
+    </div>
 
 
 
