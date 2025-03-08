@@ -78,7 +78,7 @@ Route::post('/edit_category/{id}', [AdminController::class, 'update_cat'])->name
 
 
 // 
-Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
+Route::post('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
 
 // delete and update a book in admin
 
@@ -104,3 +104,7 @@ Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
 // get the book file
 Route::get('livres/{id}/read', [LivreController::class, 'read'])->name('livres.read');
+
+
+// abstract for the controller of my admin page
+Route::get('/Abstract', [HomeController::class, 'abstract'])->name('Home');

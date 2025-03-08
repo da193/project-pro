@@ -103,6 +103,7 @@
  
 
     <h2 class="mb-4 text-2xl  bg-gradient-to-br from-purple-600 to-blue-500 font-bold text-center text-gray-300 py-6 shadow-black shadow-md ml-4 mr-4 rounded-md mt-2">Livres Disponible</h2>
+    
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 pt-5">
         @foreach ($livre as $livre)
         <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md w-72 lg:flex-row shadow-slate-700 ml-8">

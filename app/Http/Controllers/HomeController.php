@@ -41,6 +41,12 @@ class HomeController extends Controller
         $livre = Livre::findOrFail($id); 
         return view('home.details', compact('livre'));
     }
+    // abstract of the controller of my roles
+    public function abstract()
+    {
+        return view('livres.regis-book');
+    }
+
    
    
 }

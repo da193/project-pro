@@ -139,18 +139,18 @@
                     </button> --}}
     
                     <a href="{{ route('regist') }}"
-                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">
+                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800">
                         Inscription
                     </a>
                     <a href="{{ route('pre-inscription') }}"
-                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700">
+                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800 ">
                         Inscription
                     </a>
                 </div>
                 
             </div>
     
-            <div class="w-full md:w-3/4 pt-10 pr-10">
+            <div class="w-full md:w-3/4 pt-10 pr-8">
                 <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full rounded-lg md:w-3/4">
             </div>
         </div>
@@ -160,6 +160,7 @@
                 à la bibliothèque numérique ! Apprenez, explorez, découvrez !
             </span>
         </div>
+
     </div>
 
 
