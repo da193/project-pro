@@ -26,7 +26,7 @@
 
         <div class="flex items-center ">
             <!-- Logo -->
-            <img class="object-cover w-auto h-auto py-3 ml-4 md:h-20 md:w-20 " src="/storage/img/sup.png"
+            <img class="object-cover w-auto h-auto py-3 ml-6 md:h-20 md:w-20 " src="/storage/img/loog.png"
                 alt="Logo">
             {{-- <span class="gap-5 text-white">ESCa Biblio</span> --}}
             <!-- Icone -->
