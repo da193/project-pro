@@ -108,3 +108,7 @@ Route::get('livres/{id}/read', [LivreController::class, 'read'])->name('livres.r
 
 // abstract for the controller of my admin page
 Route::get('/Abstract', [HomeController::class, 'abstract'])->name('Home');
+
+
+//the about page of the side 
+Route::get('/About', [HomeController::class, 'about'])->name('about');

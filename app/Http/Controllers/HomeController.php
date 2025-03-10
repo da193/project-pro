@@ -46,6 +46,11 @@ class HomeController extends Controller
     {
         return view('livres.regis-book');
     }
+    // abstract of the controller of my roles
+    public function about()
+    {
+        return view('home.about');
+    }
 
    
    

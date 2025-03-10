@@ -38,10 +38,10 @@
               <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </button>
-          <nav>
+          <nav class="">
               <ul class="flex flex-col items-center gap-4 pr-6 text-lg font-semibold text-white md:flex-row md:gap-8">
                   <li>
-                      <a href="#" class="transition duration-200 hover:text-black">About</a>
+                      <a href="{{ route('about') }}" class="transition duration-200 hover:text-black">About</a>
                   </li>
                   <li>
                       <a href="#" class="transition duration-200 hover:text-black">Contact</a>
@@ -168,51 +168,7 @@
     </div>
 
 
-
-
-        {{-- <div class="relative mx-auto mt-3 mb-3 overflow-hidden bg-gray-700 rounded-md shadow-lg">
-        
-  <div class="rounded-md">
-      <div class="relative flex flex-col-reverse items-center justify-between px-8 mx-auto mb-10 md:flex-row py-14 max-w-7xl">
-          <div class="w-full md:w-1/2 lg:w-2/5">
-            <h2 class="mb-5 text-4xl font-bold text-white uppercase">Le savoir, c'est le pouvoir</h2>
-            <p class="mb-6 text-sm text-white md:text-base">Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque universitaire.</p>
-        </div>
-        <img  src="/storage/img/lad.png" alt="Livre illustratif">
-    </div>
-</div> --}}
-
-        {{-- <div class="flex flex-col items-start justify-start mt-8 mb-20 ml-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-            <a href="{{ route('regist') }}" class="text-white"> 
-                <!-- Ajoutez le texte ou le contenu que vous souhaitez ici -->
-            </a>
-        </div>
-    </div> --}}
-
-        {{-- <div class="h">
-    <div class="relative p-4 overflow-hidden text-blue-900 rounded-lg marquee">
-        <span
-            class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
-            à la bibliothèque numérique ! Apprenez, explorez, découvrez !
-        </span>
-
-    </div>
-    
-
-        <div class="flex flex-col items-start justify-start mt-8 ml-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-            <a href="{{ route('regist') }}"
-                class="flex items-center justify-center h-12 px-6 font-bold text-center text-white transition-transform transform rounded-lg shadow-lg bg-gradient-to-r from-blue-600 to-blue-400 hover:scale-105 hover:shadow-xl hover:bg-blue-500">
-                Admin
-            </a>
-
-            <a href="{{ route('pre-inscription') }}"
-                class="flex items-center justify-center h-12 px-6 font-bold text-center text-white transition-transform transform rounded-lg shadow-lg bg-gradient-to-r from-green-600 to-green-400 hover:scale-105 hover:shadow-xl hover:bg-green-500">
-                Étudiant
-            </a>
-        </div>
-    </div> --}}
-
-        {{-- queries style for different screens --}}
+       {{-- queries style for different screens --}}
         <style>
             @media (max-width: 768px) {
                 section {
