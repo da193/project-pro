@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
+    <title>📕 DAYLIBRIS</title>
     <link rel="stylesheet" href="https://heroicons.com">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+{{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> --}}
+{{-- abstract --}}
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
   
 <header @click.away="open = false" class=" h-24 pl-4 text-center bg- blue-900 rounded-sm shadow-md md: shadow-slate-600 bg-gradient-to-r from-red-300 to-red-400 mb-2 " x-data="{ open: false }">
@@ -142,9 +146,9 @@
                         class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800">
                         Inscription
                     </a>
-                    <a href="{{ route('pre-inscription') }}"
+                    <a href="{{ route('login') }}"
                         class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800 ">
-                        Inscription
+                        Login
                     </a>
                 </div>
                 

@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title class="text-center bg-amber-600">
-        Daylibris
+        📕 DAYLIBRIS
     </title>
-    
+
     <link rel="stylesheet" href="https://heroicons.com">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -16,16 +16,15 @@
 
 
 
-<body class="bg-gradient-to-r from-sky-300 to-cyan-300">
+<body class="bg-slate-600">
 
     {{-- abstract --}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <div class="p">
-
         <div
-            class="flex-col  bg-gray-100 md:flex md:flex-row md:min-h-screen bg-gradient-to-l from-slate-900 to-slate-700 -z-30 w-[100vw]">
+            class="flex-col w-full md:flex md:flex-row md:min-h-screen bg-gradient-to-l bg-red-600 -z-30 bg-transparent">
 
             <div @click.away="open = false"
                 class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800"
@@ -33,7 +32,7 @@
                 <div
                     class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 shadow-md bg-gray-50 dark:bg-gray-900">
                     <a href="#"
-                        class="flex gap-2 pt-2 text-lg font-semibold tracking-widest text-gray-900 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-amber-300 dark:hover:text-amber-300 focus:outline-none focus:shadow-outline">
+                        class="flex gap-2 pt-2 text-lg font-semibold tracking-widest text-gray-900 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:shadow-outline">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="flex justify-between size-9">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -57,8 +56,8 @@
 
                 </div>
                 <nav :class="{ 'block': open, 'hidden': !open }"
-                    class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto   w-[18vw]">
-                    <a class="flex  gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-amber-300 dark:hover:text-a"mber-300 dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-300 focus:bg-gray-300 focus:outline-none focus:shadow-outline "
+                    class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
+                    <a class="flex  gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-300 focus:bg-gray-300 focus:outline-none focus:shadow-outline"
                         href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="flex justify-between gap-4 size-6">
@@ -67,16 +66,16 @@
                         </svg>
                         Accueil</a>
 
-                    <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-amber-300 dark:hover:text-amber-300 dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         href="{{ route('explore') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
-x;                            <path stroke-linecap="round" stroke-linejoin="round"
+                            <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                         </svg>
 
                         Livres</a>
-                    <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-amber-300 dark:hover:text-amber-300 dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         href="{{ route('explore') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
@@ -84,7 +83,7 @@ x;                            <path stroke-linecap="round" stroke-linejoin="roun
                                 d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                         </svg>
                         Explorer</a>
-                    <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-amber-300 dark:hover:text-amber-300 dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         href="{{ route('categories') }}"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,21 +92,20 @@ x;                            <path stroke-linecap="round" stroke-linejoin="roun
                         </svg>
 
                         Categories</a>
-                    {{-- <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-amber-400 dark:hover:text-amber-400 dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                        href="{{ route('login') }}">Login</a> --}}
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                        href="{{ route('login') }}">Login</a>
+
 
                 </nav>
 
-                {{-- <footer>
-                copyrighted
-                </footer> --}}
             </div>
+
 
 
             {{-- before the header to personnalise again --}}
             <div class="flex-1">
 
-                <div class=" bg-amber-400  py-5">
+                <div class=" bg-gradient-to-r from-red-300 to-red-400  py-5">
                     <form action="{{ route('search') }}" method="get"
                         class="flex items-center max-w-lg mx-auto space-x-4">
                         @csrf
@@ -117,7 +115,7 @@ x;                            <path stroke-linecap="round" stroke-linejoin="roun
                                 placeholder="Recherchez un livre
                     ">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                
+
                                 <svg x-on:click="open = true" class="w-5 h-5 text-gray-500" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -127,7 +125,7 @@ x;                            <path stroke-linecap="round" stroke-linejoin="roun
                             </div>
                         </div>
                         <button type="submit"
-                            class="w-auto px-4 py-2 text-sm text-white transition-all duration-300 bg-blue-500 border border-transparent rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-auto px-4 py-2 text-sm text-white transition-all duration-300 bg-yellow-400 border border-transparent rounded-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400">
                             <svg class="inline w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -219,8 +217,8 @@ x;                            <path stroke-linecap="round" stroke-linejoin="roun
 
                 {{-- *********** --}}
                 <h2
-                class="py-7 mb-4 text-2xl font-bold text-center text-transparent bg-gradient-to-tr from-amber-500 to-amber-400 bg-clip-text">
-                Books currently available
+                    class="py-7 mb-4 text-2xl font-bold text-center text-transparent bg-gradient-to-tr from-amber-500 to-amber-400 bg-clip-text">
+                    Books currently available
                 </h2>
                 <div class=" py-20 mx-6 ml-6 text-center text-white rounded-sm shadow-md mt-28 bg-custom shadow-black">
                     {{-- <div class=" inset-0 "></div> --}}
