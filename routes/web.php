@@ -5,7 +5,9 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -108,6 +110,7 @@ Route::get('livres/{id}/read', [LivreController::class, 'read'])->name('livres.r
 
 // abstract for the controller of my admin page
 Route::get('/Abstract', [HomeController::class, 'abstract'])->name('Home');
+Route::get('/Users', [UsersController::class, 'user'])->name('user');
 
 
 //the about page of the side 

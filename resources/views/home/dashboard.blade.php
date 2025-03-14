@@ -44,7 +44,7 @@
                       <a href="{{ route('about') }}" class="transition duration-200 hover:text-black">About</a>
                   </li>
                   <li>
-                      <a href="#" class="transition duration-200 hover:text-black">Contact</a>
+                      <a href="{{ route('Home') }}" class="transition duration-200 hover:text-black">Contact</a>
                   </li>
               </ul>
           </nav>
