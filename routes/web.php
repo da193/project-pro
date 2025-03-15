@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/register', [RegisteredUserController::class, 'create'])->name('regist');
+// Route::get('/register', [RegisteredUserController::class, 'create'])->name('regist');
 Route::get('/student', [HomeController::class, 'home']) ->name('home');
 
 // adding a book
@@ -80,7 +80,7 @@ Route::post('/edit_category/{id}', [AdminController::class, 'update_cat'])->name
 
 
 // 
-Route::post('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
+Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
 
 // delete and update a book in admin
 
@@ -99,10 +99,6 @@ Route::get('/', [HomeController::class, 'dash']) ->name('Home');
 
 
 // getting the parameters of the admin panel to see the settings
-
-Route::get('/profile', [ProfileController::class, 'profil']) ->name('profil');
-Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-
 
 // get the book file
 Route::get('livres/{id}/read', [LivreController::class, 'read'])->name('livres.read');

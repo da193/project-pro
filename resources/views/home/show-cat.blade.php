@@ -24,7 +24,7 @@
 
         <div
             class="flex-col w-full bg-gray-100 md:flex md:flex-row md:min-h-screen bg-gradient-to-l from-slate-900 to-slate-700 -z-30 bg-transparent">
-            
+
             {{-- <x-sidebar-layout> --}}
 
             {{-- </x-sidebar-layout> --}}
@@ -109,7 +109,7 @@
 
 
                 <h2
-                    class="mb-4 text-2xl  bg-gradient-to-br from-purple-600 to-blue-500 font-bold text-center text-gray-300 py-6 shadow-black shadow-md ml-4 mr-4 rounded-md mt-2">
+                    class="mb-4 text-2xl  bg-gradient-to-r from-red-300 to-red-400 font-bold text-center text-white py-6 shadow-black shadow-md ml-4 mr-4 rounded-md mt-2">
                     Livres Disponible</h2>
 
 
@@ -119,12 +119,17 @@
                         class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-3/4  h-4/4 text-center justify-center ">
                         @foreach ($categories as $category)
                             <a href="{{ url('/category/' . $category->id) }}"
-                                class="block p-4 bg-blue-200 rounded-lg shadow hover:bg-blue-300 transition">
+                                class="block p-4 py-5 bg-yellow-400 rounded-md shadow hover:bg-yellow-200 transition border-b-4 border-r-4 border-white">
                                 {{ $category->name }}
                             </a>
                         @endforeach
                     </div>
                 </div>
+
+            </div>
+
+        </div>
+    </div>
 
 
 </body>

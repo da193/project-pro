@@ -23,10 +23,10 @@
         <div class="flex-col w-full fixed md:flex md:flex-row md:min-h-screen bg-yellow-500 -z-30 bg-transparent">
 
             <div @click.away="open = false"
-                class="flex flex-col flex-shrink-0 w-full text-yellow-500 bg-gradient-to-b from-red-500 to-red-600  md:w-64 dark:text-gray-200 dark:bg-gray-"
+                class="flex flex-col flex-shrink-0 w-full text-yellow-500 bg-gradient-to-b from-slate-700 to-slate-700  md:w-64 dark:text-gray-200 dark:bg-gray-"
                 x-data="{ open: false }">
                 <div
-                    class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 shadow-md bg-red-800 shadow-red-900 ">
+                    class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 shadow-md bg-slate-900 shadow-white ">
 
                     <a href="#"
                         class="flex gap-2 pt-2 text-lg font-bold tracking-widest text-yellow-500 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-yellow-500 dark:hover:text-gra-300 focus:outline-non focus:shadow-outlin">
@@ -106,36 +106,35 @@
 
 
                 <h2
-                    class="mb-4 text-2xl  bg-slate-700 text-center text-yellow-500 font-bold py-6 shadow-black shadow-md ml-4 mr-4 rounded-md ">
+                    class="mb-4 text-2xl  bg-white text-center bg-opacity-60 font-bold py-6 shadow-black shadow-md ml-4 mr-4 rounded-md ">
                     Livres Disponible</h2>
 
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 pt-5">
-                    @foreach ($livre as $livre)
-                        <div
-                            class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md w-72 lg:flex-row shadow-slate-700 ml-8">
-                            <img class="object-cover w-2/4 pt-2 pl-3 rounded-sm h-36 lg:w-1/3"
-                                src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
-
-                            <div class="flex-1 p-4">
-                                <h4 class="text-xl font-semibold text-gray-800">{{ $livre->title }}</h4>
-                                <h5>{{ $livre->category->name }}</h5>
-                                <span class="text-sm text-gray-700">{{ $livre->author_name }}</span>
-
-                                <div class="mt-2">
-                                    <p class="text-xs text-gray-700">{{ $livre->description }}</p>
-                                </div>
-
-                                <div class="mt-4">
-                                    <a href="{{ route('details', ['id' => $livre->id]) }}"
-                                        class="inline-block px-4 py-2 text-sm text-white bg-blue-500 rounded-lg hover:bg-blue-600">More
-                                        details</a>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-5 pb-2 md:grid-cols-1">
+                        @foreach ($livre as $livre)
+                            <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md w-72 ml-8 border-b-4 border-red-500 border- border-r-[px]">
+                                <img class="object-cover w-full h-48 rounded-t-lg" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
+                    
+                                <div class="flex-1 p-4 flex flex-col justify-between">
+                                    <div>
+                                        <h4 class="text-2xl font-bold text-gray-800 uppercase">{{ $livre->title }}</h4>
+                                        <h5 class="text-md text-red-600">{{ $livre->category->name }}</h5>
+                                        <span class="text-sm text-gray-700">{{ $livre->author_name }}</span>
+                    
+                                        <div class="mt-2">
+                                            <p class="text-xs text-gray-700">{{ $livre->description }}</p>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="mt-4">
+                                        <a href="{{ route('details', ['id' => $livre->id]) }}"
+                                           class="inline-block px-4 py-2 text-sm text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 transition hover:text-red-600 font-bold shadow-red-700">Plus de détails</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-
-                </div>
+                        @endforeach
+                    </div>
             </div>
+        </div>
         </div>
 
 

@@ -41,7 +41,7 @@
             <div
                 class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 shadow-md bg-gray-50 dark:bg-gray-900 shadow-black mb-2">
 
-                <a href="{{ route('profil') }}"
+                <a href="{{ route('profile.edit') }}"
                     class="flex gap-3  text-lg font-semibold tracking-widest text-gray-900 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:shadow-outline">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="flex justify-between size-9">
