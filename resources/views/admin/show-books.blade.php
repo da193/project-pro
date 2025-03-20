@@ -1,201 +1,77 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.side-admin')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="https://heroicons.com">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@section('content')
 
-<style>
-    .table-container {
-        overflow-x: auto;
-    }
+    <body class="">
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    .table-container::-webkit-scrollbar {
-        height: 8px;
-    }
+        {{-- <div class="flex-col w-full bg-gray-100 md:flex md:flex-row md:min-h-screen dark:bg-gray-900"> --}}
 
-    .table-container::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-    }
+            <div class="flex-1">
 
-    .table-container::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.1);
-    }
 
-    .alternating-bg:nth-child(even) {
-        background-color: #f9f9f9;
-        /* Couleur de fond pour les lignes paires */
-    }
-
-    .alternating-bg:nth-child(odd) {
-        background-color: #ffffff;
-        /* Couleur de fond pour les lignes impaires */
-    }
-
-    .title-bg {
-        background-color: #009688;
-        /* Couleur de fond du titre */
-        border-bottom: 3px solid #00796b;
-        /* Bordure inférieure pour un effet de séparation */
-    }
-
-    .title-text {
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-        /* Ombre portée pour le texte */
-    }
-
-    .title-bg:hover {
-        background-color: #00796b;
-        /* Couleur de fond du titre au survol */
-    }
-</style>
-
-<body class="">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
-<div class="flex-col w-full bg-gray-100 md:flex md:flex-row md:min-h-screen dark:bg-gray-900">
-    
-    <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
-
-      <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 mb-2 shadow-md bg-gray-50 dark:bg-gray-900 shadow-black">
-
-        <a href="{{ route('profile.edit') }}" class="flex gap-3 text-lg font-semibold tracking-widest text-gray-900 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:shadow-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="flex justify-between size-9">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-              </svg> Admin</a>
-        <button class="p-2 transition-colors duration-300 rounded-lg md:hidden hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:shadow-outline" @click="open = !open">
-          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-            <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-            <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-        
-      </div>
-      <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-        <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-300 focus:bg-gray-300 focus:outline-none focus:shadow-outline" href="#">  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="flex justify-between gap-4 text-center size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-          </svg>
-            Accueil</a>
-        <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"href="{{ route('category_page') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
-              </svg>
-            Categories</a>
-        
-        <div @click.away="open = false" class="relative" x-data="{ open: false }">
-            <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                <span class="flex gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                      </svg>
-                      
-                     Livres</span>
-                <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </button>
-            <div x-show="open" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
-                <div class="px-2 py-2 bg-white rounded-md shadow dark:bg-gray-800">
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('show_book') }}">Options</a>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('add_book') }}">Ajouter un livre</a>
-                   
+                <header class="fixed z-10 w-full py-6 text-3xl font-bold text-center text-slate-900 bg-yellow-400 shadow-lg">
+                    <h1 class="flex items-center justify-center gap-3">
+                        <svg class="w-9 h-9 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        Options de Livres
+                    </h1>
+                </header>
+                
+                <div class="container mx-auto mt-24 px-4 sm:px-6 lg:px-8">
+                    <div class="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-separate border-spacing-0">
+                                <thead class="bg-slate-700 text-yellow-300">
+                                    <tr>
+                                        <th class="px-4 py-4 text-left text-lg font-semibold sm:px-6">Titre</th>
+                                        <th class="px-4 py-4 text-left text-lg font-semibold sm:px-6">Auteur</th>
+                                        <th class="px-4 py-4 text-left text-lg font-semibold sm:px-6 hidden md:table-cell">Catégorie</th>
+                                        <th class="px-4 py-4 text-left text-lg font-semibold sm:px-6 hidden lg:table-cell">Description</th>
+                                        <th class="px-4 py-4 text-center text-lg font-semibold sm:px-6">Image</th>
+                                        <th class="px-4 py-4 text-center text-lg font-semibold sm:px-6">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-slate-700">
+                                    @foreach ($livre as $livre)
+                                        <tr class="transition-all duration-300 hover:bg-yellow-50">
+                                            <td class="px-4 py-4 font-medium sm:px-6">{{ $livre->title }}</td>
+                                            <td class="px-4 py-4 sm:px-6">{{ $livre->author_name }}</td>
+                                            <td class="px-4 py-4 sm:px-6 hidden md:table-cell">{{ $livre->category->name }}</td>
+                                            <td class="px-4 py-4 sm:px-6 max-w-md truncate hidden lg:table-cell">{{ $livre->description }}</td>
+                                            <td class="px-4 py-4 sm:px-6 text-center">
+                                                <img class="object-cover w-16 h-16 sm:w-20 sm:h-20 rounded-lg shadow-md transition-transform duration-300 hover:scale-110" 
+                                                     src="/storage/{{ $livre->book_img }}" 
+                                                     alt="{{ $livre->title }}">
+                                            </td>
+                                            <td class="px-4 py-4 sm:px-6 text-center space-x-2 sm:space-x-3">
+                                                <a href="{{ route('edit_book', $livre->id) }}"
+                                                   class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 text-sm font-medium text-slate-800 bg-yellow-400 rounded-lg shadow-md hover:bg-yellow-500 hover:text-slate-900 transition-all duration-300">
+                                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                                    </svg>
+                                                    Modifier
+                                                </a>
+                                                <a x-data="{ showModal: false }" 
+                                                   @click="showModal = true"
+                                                   href="{{ route('delete_book', $livre->id) }}"
+                                                   class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 text-sm font-medium text-white bg-slate-600 rounded-lg shadow-md hover:bg-slate-700 transition-all duration-300">
+                                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4M9 7h6"></path>
+                                                    </svg>
+                                                    Supprimer
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
-        
-
-      </nav>
-
-      
-    </div>
-
-   
-    <div class="flex-1">
-
-
-        <header
-        class="fixed z-10 w-full py-5 mb-6 overflow-y-hidden text-2xl font-bold text-center text-white rounded-md shadow-md bg-gradient-to-r from-blue-500 to-purple-500 shadow-black">
-        <h1>Options de Livres</h1>
-    </header>
-    
-    @if (session()->has('message'))
-    @endif
-    
-    <div class="flex items-center justify-center min-h-screen px-4 py-4 bg-gradient-to-r from-slate-600 to-slate-700">
-        <div class="items-center justify-center p-4 px-4 py-12 overflow-hidden rounded-lg shadow-lg">
-            <table class="w-full bg-white border border-gray-200 divide-y divide-gray-300 rounded-lg shadow-md">
-                <thead class="text-white bg-gradient-to-t from-blue-800 to-sky-4">
-                    <tr>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Titre</th>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Auteur</th>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Catégorie</th>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Description</th>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Image</th>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Supprimer</th>
-                        <th class="px-4 py-3 text-lg font-semibold text-left">Modifier</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700">
-                    @foreach ($livre as $livre)
-                    <tr class="transition-colors duration-300 hover:bg-gray-50">
-                        <td class="px-4 py-4">{{ $livre->title }}</td>
-                        <td class="px-4 py-4">{{ $livre->author_name }}</td>
-                        <td class="px-4 py-4">{{ $livre->category->name }}</td>
-                        <td class="px-4 py-4">{{ $livre->description }}</td>
-                        <td class="px-4 py-4 text-center">
-                            <img class="object-cover w-24 h-24 transition-transform transform border border-gray-300 rounded-lg shadow-sm hover:scale-105"
-                                src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
-                        </td>
-                        <td x-data="{ showModal: true }" class="px-4 py-4 text-center">
-                            <a @click="showModal = true"
-                                class="w-full px-4 py-2 text-sm font-medium text-white bg-red-500 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-red-500"
-                                href="{{ route('delete_book', $livre->id) }}">Delete</a>
-                        </td>
-                        <td class="px-4 py-4 text-center">
-                            <a class="w-full px-4 py-2 text-sm font-medium text-white border border-gray-300 rounded-md shadow-sm bg-gradient-to-t from-green-600 to-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-red-500"
-                                href="{{ route('edit_book', $livre->id) }}">Update</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-           
-        </div>
-    </div>
-    
-    <style>
-        @media (max-width: 768px) {
-            table {
-                font-size: 0.875rem; /* Réduit la taille de police pour les petits écrans */
-            }
-            th, td {
-                padding: 0.5rem; /* Réduit les espacements */
-            }
-            img {
-                width: 64px; /* Réduit la taille des images */
-                height: 64px;
-            }
-        }
-    
-        @media (max-width: 640px) {
-            header h1 {
-                font-size: 1.5rem; /* Réduit la taille du titre */
-            }
-            table, th, td {
-                font-size: 0.75rem; /* Encore plus réduit pour les très petits écrans */
-            }
-        }
-    </style>
-    
-
-
-</body>
-
-</html>
+    @endsection
