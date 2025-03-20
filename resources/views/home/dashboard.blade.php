@@ -24,7 +24,7 @@
 
     <div class="flex items-center justify-between px-4 ">
 
-        <div class="flex items-center ">
+        <div class="flex items-center ">    
             <!-- Logo -->
             <img class="object-cover w-auto h-auto py-3 ml-6 md:h-20 md:w-20 " src="/storage/img/loog.png"
                 alt="Logo">

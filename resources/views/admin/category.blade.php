@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📕 DAYLIBRIS</title>
-    <link rel="stylesheet" href="https://heroicons.com">
-    <link rel="stydxlesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+@extends('layouts.side-admin')
+
+@section('content')
 
 <style>
     .transition-transform {
@@ -29,12 +21,11 @@
     }
 </style>
 
-<body class="font-sans ">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
 
     <div class="flex-col w-full bg-gray-100 md:flex md:flex-row md:min-h-screen dark:bg-gray-400">
 
-        <div @click.away="open = false"
+        {{-- <div @click.away="open = false"
             class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800"
             x-data="{ open: false }">
 
@@ -120,7 +111,7 @@
             </nav>
 
 
-        </div>
+        </div> --}}
 
 
         <div class="flex-1 ml-2">
@@ -214,7 +205,6 @@
                 }
             </style>
 
+@endsection
 
-</body>
 
-</html>

@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
     <div class="p">
         <div
             class="flex-col w-full md:flex md:flex-row md:min-h-screen bg-gradient-to-l bg-red-600 -z-30 bg-transparent">
@@ -163,55 +164,130 @@
             </header> --}}
 
                 {{-- ***starting the carousel **** --}}
-                <div class="relative w -5/6 md:w-1/2 flex left- py-8  ml-32">
-                    <div id="carousel" class="overflow-hidden rounded-lg ">
-                        <div class="flex transition-transform duration-500" id="carousel-images">
-                            <img src="/storage/img/desk.png" alt="Bibliothèque"
-                                class="object-cover h-full w-full flex-shrink-0">
-                            <img src="/storage/img/bo.png" alt="Bibliothèque"
-                                class="object-cover h-full w-full flex-shrink-0">
-                            <img src="/storage/img/lad.png" alt="Bibliothèque"
-                                class="object-cover h-full w-full flex-shrink-0">
-                            <img src="/storage/img/desk.png" alt="Bibliothèque"
-                                class="object-cover h-full w-full flex-shrink-0">
-                            <img src="/storage/img/live.png" alt="Bibliothèque"
-                                class="object-cover h-full w-full flex-shrink-0">
-                            <img src="/storage/img/desk.png" alt="Bibliothèque"
-                                class="object-cover h-full w-full flex-shrink-0">
+                <style>
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            height: 500px; /* Hauteur augmentée */
+            padding: 0 15px; /* Padding à gauche et à droite */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .carousel-images {
+            transition: transform 0.5s ease;
+        }
+        .carousel-image {
+            min-width: 100%;
+            height: auto;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .active {
+            transform: scale(1.2); /* Image active plus grande */
+            opacity: 1;
+        }
+        .inactive {
+            transform: scale(0.8); /* Images inactives plus petites */
+            opacity: 0.5;
+        }
+    </style>
 
+                <div class="bg-white">
+                        <div class="carousel w-full">
+                            <div class="carousel-images flex items-center transform ">
+                                <img src="/storage/img/desk.png" class="carousel-image active" alt="Image 1">
+                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 2">
+                                <img src="/storage/img/logo3.png" class="carousel-image inactive" alt="Image 3">
+                            </div>
+                            <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❮</button>
+                            <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❯</button>
                         </div>
-                    </div>
-                    {{-- <button onclick="prevImage()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">❮</button>
-    <button onclick="nextImage()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">❯</button> --}}
+                    
+                        <script>
+                            const images = document.querySelectorAll('.carousel-image');
+                            const prevButton = document.getElementById('prev');
+                            const nextButton = document.getElementById('next');
+                            let currentIndex = 0;
+                    
+                            function updateCarousel() {
+                                images.forEach((img, index) => {
+                                    if (index === currentIndex) {
+                                        img.classList.add('active');
+                                        img.classList.remove('inactive');
+                                    } else {
+                                        img.classList.add('inactive');
+                                        img.classList.remove('active');
+                                    }
+                                });
+                                const offset = -currentIndex * 100;
+                                document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+                            }
+                    
+                            nextButton.addEventListener('click', () => {
+                                currentIndex = (currentIndex + 1) % images.length;
+                                updateCarousel();
+                            });
+                    
+                            prevButton.addEventListener('click', () => {
+                                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                                updateCarousel();
+                            });
+                    
+                            // Auto scroll every 5 seconds
+                            setInterval(() => {
+                                currentIndex = (currentIndex + 1) % images.length;
+                                updateCarousel();
+                            }, 5000);
+                        </script>
+                    
                 </div>
 
+                <div class="relative w -5/6 md:w-1/2 flex left- py-8  ml-32">
+                    <div x-data="{ current: 0, images: [
+                        '{{ asset('/storage/img/loog.png') }}',
+                        '{{ asset('/storage/img/loog.png') }}',
+                        '{{ asset('/storage/img/loog.png') }}',
+                        '{{ asset('/storage/img/loog.png') }}',
+                        '{{ asset('images/image4.jpg') }}',
+                        '{{ asset('images/image5.jpg') }}',
+                        '{{ asset('images/image6.jpg') }}'
+                        '{{ asset('images/image2.jpg') }}',
+                    ] }" 
+                    class="relative w-full px-4 md:px-8 lg:px-16 py-8">
+                
+                    <!-- Conteneur du carrousel -->
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg h-[400px]">
+                        <template x-for="(image, index) in images" :key="index">
+                            <div x-show="current === index" 
+                                class="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                                x-transition:enter="opacity-0" 
+                                x-transition:enter-end="opacity-100" 
+                                x-transition:leave="opacity-100" 
+                                x-transition:leave-end="opacity-0">
+                                <img :src="image" class="w-full h-[400px] object-cover rounded-2xl"/>
+                            </div>
+                        </template>
+                    </div>
+                
+                    <!-- Boutons de navigation -->
+                    <button 
+                        @click="current = (current > 0) ? current - 1 : images.length - 1"
+                        class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
+                        &#10094;
+                    </button>
+                    <button 
+                        @click="current = (current < images.length - 1) ? current + 1 : 0"
+                        class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
+                        &#10095;
+                    </button>
+                
+                </div>
+                    
+                </div>
+
+
                 {{-- script for the carousel --}}
-                <script>
-                    let currentIndex = 0;
-                    const totalImages = 6; // Nombre total d'images
-                    const intervalTime = 7000; // Durée en millisecondes pour le défilement automatique
-
-                    function showImage(index) {
-                        const images = document.querySelectorAll('#carousel-images img');
-                        currentIndex = (index + totalImages) % totalImages; // Gérer l'index
-                        const offset = -currentIndex * 100; // Calculer le décalage
-                        document.getElementById('carousel-images').style.transform = `translateX(${offset}%)`;
-                    }
-
-                    function nextImage() {
-                        showImage(currentIndex + 1);
-                    }
-
-                    function prevImage() {
-                        showImage(currentIndex - 1);
-                    }
-
-                    // Défilement automatique
-                    setInterval(nextImage, intervalTime);
-
-                    // Initialiser le premier affichage
-                    showImage(currentIndex);
-                </script>
+                
                 {{-- end script --}}
                 {{-- ***ending the carousel  ****** --}}
 
