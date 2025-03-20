@@ -192,12 +192,15 @@
         }
     </style>
 
-                <div class="bg-white">
-                        <div class="carousel w-full">
-                            <div class="carousel-images flex items-center transform ">
+                <div class="bg-slate-400 mx-5 my-4 rounded-md ">
+                        <div class="carousel ">
+                            <div class="carousel-images flex items-center transform w-[37vw]">
                                 <img src="/storage/img/desk.png" class="carousel-image active" alt="Image 1">
                                 <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 2">
-                                <img src="/storage/img/logo3.png" class="carousel-image inactive" alt="Image 3">
+                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 3">
+                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 4">
+                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 5">
+                                
                             </div>
                             <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❮</button>
                             <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❯</button>
@@ -242,48 +245,7 @@
                     
                 </div>
 
-                <div class="relative w -5/6 md:w-1/2 flex left- py-8  ml-32">
-                    <div x-data="{ current: 0, images: [
-                        '{{ asset('/storage/img/loog.png') }}',
-                        '{{ asset('/storage/img/loog.png') }}',
-                        '{{ asset('/storage/img/loog.png') }}',
-                        '{{ asset('/storage/img/loog.png') }}',
-                        '{{ asset('images/image4.jpg') }}',
-                        '{{ asset('images/image5.jpg') }}',
-                        '{{ asset('images/image6.jpg') }}'
-                        '{{ asset('images/image2.jpg') }}',
-                    ] }" 
-                    class="relative w-full px-4 md:px-8 lg:px-16 py-8">
                 
-                    <!-- Conteneur du carrousel -->
-                    <div class="relative overflow-hidden rounded-2xl shadow-lg h-[400px]">
-                        <template x-for="(image, index) in images" :key="index">
-                            <div x-show="current === index" 
-                                class="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                                x-transition:enter="opacity-0" 
-                                x-transition:enter-end="opacity-100" 
-                                x-transition:leave="opacity-100" 
-                                x-transition:leave-end="opacity-0">
-                                <img :src="image" class="w-full h-[400px] object-cover rounded-2xl"/>
-                            </div>
-                        </template>
-                    </div>
-                
-                    <!-- Boutons de navigation -->
-                    <button 
-                        @click="current = (current > 0) ? current - 1 : images.length - 1"
-                        class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
-                        &#10094;
-                    </button>
-                    <button 
-                        @click="current = (current < images.length - 1) ? current + 1 : 0"
-                        class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">
-                        &#10095;
-                    </button>
-                
-                </div>
-                    
-                </div>
 
 
                 {{-- script for the carousel --}}

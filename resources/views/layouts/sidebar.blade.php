@@ -15,16 +15,15 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     <div
-        class="flex-col w-full bg-gray-100 md:flex md:flex-row md:min-h-screen bg-gradient-to-l from-slate-900 to-slate-700 -z-30 bg-transparent">
+    class="flex-col w-full md:flex md:flex-row md:min-h-screen bg-gradient-to-l bg-red-600 -z-30 bg-transparent">
 
-        <div @click.away="open = false"
-        class="flex flex-col flex-shrink-0 w-full text-yellow-500 bg-gradient-to-b from-red-500 to-red-600  md:w-64 dark:text-gray-200 dark:bg-gray-"
+    <div @click.away="open = false"
+        class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800"
         x-data="{ open: false }">
         <div
-            class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 shadow-md bg-red-800 shadow-red-900 ">
-
+            class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 shadow-md bg-gray-50 dark:bg-gray-900">
             <a href="#"
-                class="flex gap-2 pt-2 text-lg font-bold tracking-widest text-yellow-500 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-yellow-500 dark:hover:text-gra-300 focus:outline-non focus:shadow-outlin">
+                class="flex gap-2 pt-2 text-lg font-semibold tracking-widest text-gray-900 uppercase transition-colors duration-300 rounded-lg dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:shadow-outline">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="flex justify-between size-9">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -33,7 +32,7 @@
 
                 User</a>
             <button
-                class="p-2 transition-colors duration-300 rounded-lg md:hidden hover:bg-gray-200 dark:hover:bg-yellow-500 focus:outline-none focus:shadow-outline"
+                class="p-2 transition-colors duration-300 rounded-lg md:hidden hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:shadow-outline"
                 @click="open = !open">
                 <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                     <path x-show="!open" fill-rule="evenodd"
@@ -47,10 +46,9 @@
 
 
         </div>
-
         <nav :class="{ 'block': open, 'hidden': !open }"
             class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-            <a class="flex  gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-gray-200 rounded-lg dark:bg-yellow-500 dark:hover:bg-yellow-500 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-yellow-300 focus:bg-gray-300 focus:outline-none focus:shadow-outline"
+            <a class="flex  gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-gray-200 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-300 focus:bg-gray-300 focus:outline-none focus:shadow-outline"
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="flex justify-between gap-4 size-6">
@@ -59,7 +57,7 @@
                 </svg>
                 Accueil</a>
 
-            <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-bold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-yellow-500 dark:focus:bg-yellow-500 dark:focus:text-white dark:hover:text-white dark:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-yellow-200 focus:outline-none focus:shadow-outline"
+            <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="{{ route('explore') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
@@ -68,7 +66,7 @@
                 </svg>
 
                 Livres</a>
-            <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-bold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-yellow-500 dark:focus:bg-yellow-500 dark:focus:text-white dark:hover:text-white dark:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-yellow-200 focus:outline-none focus:shadow-outline"
+            <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="{{ route('explore') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
@@ -76,7 +74,7 @@
                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                 </svg>
                 Explorer</a>
-            <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-bold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-yellow-500 dark:focus:bg-yellow-500 dark:focus:text-white dark:hover:text-white dark:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-yellow-200 focus:outline-none focus:shadow-outline"
+            <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="{{ route('categories') }}"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -85,19 +83,17 @@
                 </svg>
 
                 Categories</a>
-            {{-- <a class="flex gap-3 px-4 py-2 mt-2 text-sm font-bold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-yellow-500 dark:focus:bg-yellow-500 dark:focus:text-white dark:hover:text-white dark:text-white hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-yellow-200 focus:outline-none focus:shadow-outline"
-                href="{{ route('login') }}">Login</a> --}}
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 transition-colors duration-300 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="{{ route('login') }}">Login</a>
 
 
         </nav>
 
     </div>
+    </div>
 
-
-
-        <div class="flex-1">
-        </div>
     
+    
+    @yield('content')
 </body>
-
 </html>
