@@ -165,91 +165,95 @@
 
                 {{-- ***starting the carousel **** --}}
                 <style>
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            height: 500px; /* Hauteur augmentée */
-            padding: 0 15px; /* Padding à gauche et à droite */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .carousel-images {
-            transition: transform 0.5s ease;
-        }
-        .carousel-image {
-            min-width: 100%;
-            height: auto;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-        .active {
-            transform: scale(1.2); /* Image active plus grande */
-            opacity: 1;
-        }
-        .inactive {
-            transform: scale(0.8); /* Images inactives plus petites */
-            opacity: 0.5;
-        }
-    </style>
+                    .carousel {
+                        height: 500px;
+                        /* Hauteur augmentée */
+                        /
+                    }
+
+                    .carousel-images {
+                        transition: transform 0.5s ease;
+                    }
+
+                    .carousel-image {
+                        min-width: 100%;
+                        height: auto;
+                        transition: transform 0.5s ease, opacity 0.5s ease;
+                    }
+
+                    .active {
+                        transform: scale(1.2);
+                        /* Image active plus grande */
+                        opacity: 1;
+                    }
+
+                    .inactive {
+                        transform: scale(0.8);
+                        /* Images inactives plus petites */
+                        opacity: 0.5;
+                    }
+                </style>
 
                 <div class="bg-slate-400 mx-5 my-4 rounded-md ">
-                        <div class="carousel ">
-                            <div class="carousel-images flex items-center transform w-[37vw]">
-                                <img src="/storage/img/desk.png" class="carousel-image active" alt="Image 1">
-                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 2">
-                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 3">
-                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 4">
-                                <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 5">
-                                
-                            </div>
-                            <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❮</button>
-                            <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❯</button>
+                    <div class="carousel relative  overflow-hidden h- flex justify-center items-center pr-4">
+                        <div class="carousel-images flex items-center transform w-[37vw]">
+                            <img src="/storage/img/desk.png" class="carousel-image active" alt="Image 1">
+                            <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 2">
+                            <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 3">
+                            <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 4">
+                            <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 5">
+
                         </div>
-                    
-                        <script>
-                            const images = document.querySelectorAll('.carousel-image');
-                            const prevButton = document.getElementById('prev');
-                            const nextButton = document.getElementById('next');
-                            let currentIndex = 0;
-                    
-                            function updateCarousel() {
-                                images.forEach((img, index) => {
-                                    if (index === currentIndex) {
-                                        img.classList.add('active');
-                                        img.classList.remove('inactive');
-                                    } else {
-                                        img.classList.add('inactive');
-                                        img.classList.remove('active');
-                                    }
-                                });
-                                const offset = -currentIndex * 100;
-                                document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-                            }
-                    
-                            nextButton.addEventListener('click', () => {
-                                currentIndex = (currentIndex + 1) % images.length;
-                                updateCarousel();
+                        <button id="prev"
+                            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white px-4 rounded-full shadow">❮</button>
+                        <button id="next"
+                            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">❯</button>
+                    </div>
+
+                    <script>
+                        const images = document.querySelectorAll('.carousel-image');
+                        const prevButton = document.getElementById('prev');
+                        const nextButton = document.getElementById('next');
+                        let currentIndex = 0;
+
+                        function updateCarousel() {
+                            images.forEach((img, index) => {
+                                if (index === currentIndex) {
+                                    img.classList.add('active');
+                                    img.classList.remove('inactive');
+                                } else {
+                                    img.classList.add('inactive');
+                                    img.classList.remove('active');
+                                }
                             });
-                    
-                            prevButton.addEventListener('click', () => {
-                                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                                updateCarousel();
-                            });
-                    
-                            // Auto scroll every 5 seconds
-                            setInterval(() => {
-                                currentIndex = (currentIndex + 1) % images.length;
-                                updateCarousel();
-                            }, 5000);
-                        </script>
-                    
+                            const offset = -currentIndex * 100;
+                            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+                        }
+
+                        nextButton.addEventListener('click', () => {
+                            currentIndex = (currentIndex + 1) % images.length;
+                            updateCarousel();
+                        });
+
+                        prevButton.addEventListener('click', () => {
+                            currentIndex = (currentIndex - 1 + images.length) % images.length;
+                            updateCarousel();
+                        });
+
+                        // Auto scroll every 5 seconds
+                        setInterval(() => {
+                            currentIndex = (currentIndex + 1) % images.length;
+                            updateCarousel();
+                        }, 5000);
+                    </script>
+
                 </div>
 
-                
+
 
 
                 {{-- script for the carousel --}}
-                
+
                 {{-- end script --}}
                 {{-- ***ending the carousel  ****** --}}
 
@@ -282,9 +286,11 @@
 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-5 pb-2 md:grid-cols-1">
                     @foreach ($livre as $livre)
-                        <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md w-72 ml-8 border-b-4 border-red-500 border- border-r-[px]">
-                            <img class="object-cover w-full h-48 rounded-t-lg" src="/storage/{{ $livre->book_img }}" alt="{{ $livre->title }}">
-                
+                        <div
+                            class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md w-72 ml-8 border-b-4 border-red-500 border- border-r-[px]">
+                            <img class="object-cover w-full h-48 rounded-t-lg" src="/storage/{{ $livre->book_img }}"
+                                alt="{{ $livre->title }}">
+
                             <div class="flex-1 p-4 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-2xl font-bold text-gray-800 uppercase">{{ $livre->title }}</h4>
@@ -295,10 +301,11 @@
                                         <p class="text-xs text-gray-700">{{ $livre->description }}</p>
                                     </div> --}}
                                 </div>
-                
+
                                 <div class="mt-4">
                                     <a href="{{ route('details', ['id' => $livre->id]) }}"
-                                       class="inline-block px-4 py-2 text-sm text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 transition hover:text-red-600 font-bold shadow-red-700 w-full text-center">Plus de détails</a>
+                                        class="inline-block px-4 py-2 text-sm text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 transition hover:text-red-600 font-bold shadow-red-700 w-full text-center">Plus
+                                        de détails</a>
                                 </div>
                             </div>
                         </div>

@@ -11,121 +11,75 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-{{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> --}}
-{{-- abstract --}}
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
-  
-<header @click.away="open = false" class=" h-24 pl-4 text-center bg- blue-900 rounded-sm shadow-md md: shadow-slate-600 bg-gradient-to-r from-red-300 to-red-400 mb-2 " x-data="{ open: false }">
-    
-    
 
-    <div class="flex items-center justify-between px-4 ">
 
-        <div class="flex items-center ">    
+<header
+    class="h-24 pl-4 bg-blue-900 rounded-sm shadow-md md:shadow-slate-600 bg-gradient-to-r from-red-300 to-red-400 mb-2">
+    <div class="flex items-center justify-between px-4 h-full max-w-7xl mx-auto">
+        <div class="flex items-center">
             <!-- Logo -->
-            <img class="object-cover w-auto h-auto py-3 ml-6 md:h-20 md:w-20 " src="/storage/img/loog.png"
+            <img class="object-cover w-auto h-16 py-3 ml-2 md:ml-6 md:h-20 md:w-20" src="/storage/img/loog.png"
                 alt="Logo">
-            {{-- <span class="gap-5 text-white">ESCa Biblio</span> --}}
-            <!-- Icone -->
-
         </div>
-        <button class="p-2 transition-colors duration-300 rounded-lg md:hidden hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:shadow-outline" @click="open = !open">
-            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-              <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-              <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg>
-          </button>
 
-          <nav class="">
-              <ul class="flex flex-col items-center gap-4 pr-6 text-lg font-semibold text-white md:flex-row md:gap-8">
-                  <li>
-                      <a href="{{ route('about') }}" class="transition duration-200 hover:text-black ">About</a>
-                  </li>
-                  <li>
-                      <a href="{{ route('Home') }}" class="transition duration-200 hover:text-black">Contact</a>
-                  </li>
-              </ul>
-          </nav>
-      </div>
-        <!-- Navigation -->
+        <!-- Hamburger menu button (visible only on small screens) -->
+        <div x-data="{ open: false }" class="md:hidden">
+            <button @click="open = !open" class="text-white focus:outline-none">
+                <!-- Hamburger icon -->
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
 
+            <!-- Dropdown menu -->
+            <div x-show="open" @click.outside="open = false"
+                class="absolute right-4 mt-2 w-48 bg-yellow-400 rounded-md shadow-lg z-10">
+                <ul class="flex flex-col items-center gap-4 py-4 text-lg font-semibold text-black">
+                    <li>
+                        <a href="{{ route('about') }}"
+                            class="relative transition duration-200 hover:text-gray-800 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100"
+                            @click="open = false">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('Home') }}"
+                            class="relative transition duration-200 hover:text-gray-800 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100"
+                            @click="open = false">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-
-</header> 
-
-<!-- Styles et media queries -->
-{{-- <style>
-    @media (max-width: 768px) {
-        header {
-            padding: 1rem; /* Ajuste les espacements */
-        }
-        img {
-            width: 64px; /* Réduit la taille du logo */
-            height: 64px;
-        }
-        svg {
-            display: none; /* Masque l'icône sur les petits écrans */
-        }
-        nav ul {
-            text-align: center; /* Centrer la navigation sur petits écrans */
-        }
-    }
-
-    @media (max-width: 640px) {
-        header {
-            height: auto; /* Permet une hauteur plus flexible */
-        }
-        nav ul {
-            gap: 2rem; /* Ajuste l'espacement des liens pour petits écrans */
-        }
-    }
-
-    @media (min-width: 769px) {
-        nav ul {
-            gap: 4vw; /* Espace dynamique basé sur la largeur de l'écran */
-        }
-    }
-</style> --}}
+        <!-- Desktop navigation (hidden on small screens) -->
+        <nav class="hidden md:block pr-2 md:pr-6">
+            <ul class="flex flex-row items-center gap-8 text-lg font-semibold text-white">
+                <li>
+                    <a href="{{ route('about') }}"
+                        class="relative transition duration-200 hover:text-black after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('Home') }}"
+                        class="relative transition duration-200 hover:text-black after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
 
 <body class="">
-
-    {{-- <div class="h-screen bg-black mt-">
-        <div class="flex items-center justify-between">
-            <div class="w-3/4 p-10 pt-40 md:flex-row">
-                <h1 class="pb-4 text-6xl font-bold text-yellow-500 md:text-7xl ">Welcome To Daylibris</h1>
-                <span class="pt-16 pb-4 text-xl text-white">Le savoir, c'est le pouvoir</span>
-                <p class="mt-5 text-lg text-white md:text-xl">Plongez dans un vaste éventail de ressources littéraires
-                    <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
-                    bibliothèque numérique.</p>
-
-                <button class="px-6 py-3 mt-8 font-semibold text-white bg-blue-500 rounded hover:bg-blue-700">
-                    Découvrir
-                </button>
-
-                <a href="{{ route('pre-inscription') }}"
-                    class="px-6 py-3 mt-12 font-semibold text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-700 ">Inscription</a>
-
-            </div>
-            <div class="w-3/4 pt-10 pr-10">
-                <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full">
-            </div>
-        </div>
-
-
-
-        <div class="relative p-4 overflow-hidden text-yellow-500 rounded-lg marquee">
-
-            <span
-                class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
-                à la bibliothèque numérique ! Apprenez, explorez, découvrez !
-            </span>
-
-        </div>
-    </div> --}}
 
     <div class="h-screen bg-slate-600">
         <div class="flex flex-col md:flex-row items-center justify-between">
@@ -137,12 +91,9 @@
                     <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
                     bibliothèque numérique.
                 </p>
-    
+
                 <div class="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4">
-                    {{-- <button class="px-6 py-3 font-semibold text-white bg-blue-500 rounded hover:bg-blue-700">
-                        Découvrir
-                    </button> --}}
-    
+                    
                     <a href="{{ route('register') }}"
                         class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800">
                         Register
@@ -152,16 +103,23 @@
                         Login
                     </a>
                 </div>
-                
+
             </div>
-    
+
             <div class="w-full md:w-3/4 pt-10 pr-8">
-                <img src="/storage/img/desk.png" alt="Bibliothèque" class="object-cover w-full h-full rounded-lg md:w-3/4">
+                <img src="/storage/img/desk.png" alt="Bibliothèque"
+                    class="object-cover w-full h-full rounded-lg md:w-3/4">
             </div>
         </div>
-    
+
         <div class="relative p-4 overflow-hidden text-yellow-300 rounded-lg marquee">
-            <span class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
+            <div class="overflow-hidden w-full">
+                <p class="marquee-text text-blue-700 text-base md:text-lg whitespace-nowrap">
+                    Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque numérique.
+                </p>
+            </div>
+            <span
+                class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
                 à la bibliothèque numérique ! Apprenez, explorez, découvrez !
             </span>
         </div>
@@ -169,35 +127,40 @@
     </div>
 
 
-       {{-- queries style for different screens --}}
-        <style>
-            @media (max-width: 768px) {
-                section {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                img {
-                    width: 100%;
-                    max-width: 300px;
-                    /* Ajuste la taille de l'image sur mobile */
-                }
+    {{-- queries style for different screens --}}
+    <style>
+        @media (max-width: 768px) {
+            section {
+                flex-direction: column;
+                align-items: center;
             }
-        </style>
-        {{-- queries style for different screens --}}
 
-        <style>
-            @media (max-width: 768px) {
-                .h-screen {
-                    height: auto;
-                    /* Ajuste la hauteur sur mobile */
-                }
+            img {
+                width: 100%;
+                max-width: 300px;
+                /* Ajuste la taille de l'image sur mobile */
             }
-        </style>
+        }
+    </style>
+    {{-- queries style for different screens --}}
+
+    <style>
+        @media (max-width: 768px) {
+            .h-screen {
+                height: auto;
+                /* Ajuste la hauteur sur mobile */
+            }
+        }
+    </style>
 
     </div>
 
     {{-- style of the swaying word of the bords --}}
+    {{-- <p class="mt-5 text-base text-white md:text-lg">
+        Plongez dans un vaste éventail de ressources littéraires
+        <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
+        bibliothèque numérique.
+    </p>
     <style>
         @keyframes marquee {
             0% {
@@ -237,6 +200,7 @@
             }
         }
     </style>
+     
 
     <script>
         const marqueeContent = document.querySelector('.marquee-content');
@@ -251,8 +215,55 @@
                 marqueeContent.style.animation = '';
             }, 50);
         });
+    </script> --}}
+    
+    
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    
+        .marquee-text {
+            animation: marquee 20s linear infinite;
+            will-change: transform;
+        }
+    
+        .marquee-text:hover {
+            animation-play-state: paused;
+        }
+    
+        @media (min-width: 768px) {
+            .marquee-text {
+                animation-duration: 18s;
+            }
+        }
+    
+        @media (max-width: 640px) {
+            .marquee-text {
+                animation-duration: 12s;
+            }
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const marqueeText = document.querySelector('.marquee-text');
+            
+            marqueeText.addEventListener('animationiteration', () => {
+                marqueeText.style.transition = 'none';
+                marqueeText.style.transform = 'translateX(100%)';
+                requestAnimationFrame(() => {
+                    marqueeText.style.transition = '';
+                });
+            });
+        });
     </script>
-
+ 
 
 
 </body>
