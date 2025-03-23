@@ -114,7 +114,7 @@
 
         <div class="relative p-4 overflow-hidden text-yellow-300 rounded-lg marquee">
             <div class="overflow-hidden w-full">
-                <p class="marquee-text text-blue-700 text-base md:text-lg whitespace-nowrap">
+                <p class="marquee-text text-yellow-300  text-base md:text-lg whitespace-nowrap">
                     Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque numérique.
                 </p>
             </div>
