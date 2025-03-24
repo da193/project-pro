@@ -111,3 +111,5 @@ Route::get('/Users', [UsersController::class, 'user'])->name('user');
 
 //the about page of the side 
 Route::get('/About', [HomeController::class, 'about'])->name('about');
+//contact page
+Route::get('/Contact', [HomeController::class, 'contact'])->name('contact');

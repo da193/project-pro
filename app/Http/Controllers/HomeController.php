@@ -52,6 +52,12 @@ class HomeController extends Controller
         return view('home.about');
     }
 
+    // abstract of the controller of my roles
+    public function contact(Request $request)
+    {
+        return view('home.contact');
+    }
+
    
    
 }

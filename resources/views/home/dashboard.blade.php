@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('Home') }}"
+                        <a href="{{ route('contact') }}"
                             class="relative transition duration-200 hover:text-gray-800 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100"
                             @click="open = false">
                             Contact
@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('Home') }}"
+                    <a href="{{ route('contact') }}"
                         class="relative transition duration-200 hover:text-black after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100">
                         Contact
                     </a>
