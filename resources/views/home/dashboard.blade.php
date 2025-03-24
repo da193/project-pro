@@ -124,7 +124,7 @@
 
     <div class="h-screen bg-slate-600">
         <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="w-full md:w-3/4 p-10 pt-40">
+            <div class="w-full md:w-3/4 p-10 pt-24">
                 <h1 class="pb-4 text-5xl font-bold text-yellow-400 md:text-7xl">Welcome To Daylibris</h1>
                 <span class="pt-4 pb-4 text-lg text-white md:text-xl">Le savoir, c'est le pouvoir</span>
                 <p class="mt-5 text-base text-white md:text-lg">
