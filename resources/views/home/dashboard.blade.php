@@ -38,8 +38,8 @@
 
             <!-- Dropdown menu -->
             <div x-show="open" @click.outside="open = false"
-                class="absolute right-4 mt-2 w-48 bg-yellow-400 rounded-md shadow-lg z-10">
-                <ul class="flex flex-col items-center gap-4 py-4 text-lg font-semibold text-black">
+                class="absolute right-4 mt-2 w-48 bg-gradient-to-b from-red-200 to-red-300 rounded-md shadow-lg z-10">
+                <ul class="flex flex-col items-center gap-4 py-4 text-lg font-semibold text-white">
                     <li>
                         <a href="{{ route('about') }}"
                             class="relative transition duration-200 hover:text-gray-800 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-4px] after:scale-x-0 after:origin-center after:transition-transform after:duration-200 hover:after:scale-x-100"
@@ -81,7 +81,7 @@
 
 <body class="">
 
-    <div class="h-screen bg-slate-600">
+    {{-- <div class="h-screen bg-slate-600">
         <div class="flex flex-col md:flex-row items-center justify-between">
             <div class="w-full md:w-3/4 p-10 pt-40">
                 <h1 class="pb-4 text-5xl font-bold text-yellow-400 md:text-7xl">Welcome To Daylibris</h1>
@@ -115,13 +115,50 @@
         <div class="relative p-4 overflow-hidden text-yellow-300 rounded-lg marquee">
             <div class="overflow-hidden w-full">
                 <p class="marquee-text text-yellow-300  text-base md:text-lg whitespace-nowrap">
-                    Plongez dans un vaste éventail de ressources littéraires et scientifiques pour soutenir vos études et enrichir vos recherches à travers notre bibliothèque numérique.
+                    Bienvenue à la bibliothèque numérique ! Apprenez, explorez, découvrez !
                 </p>
             </div>
-            <span
-                class="inline-block pb-8 transition-opacity duration-500 opacity-0 marquee-content animate-marquee">Bienvenue
-                à la bibliothèque numérique ! Apprenez, explorez, découvrez !
-            </span>
+        </div>
+
+    </div> --}}
+
+    <div class="h-screen bg-slate-600">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="w-full md:w-3/4 p-10 pt-40">
+                <h1 class="pb-4 text-5xl font-bold text-yellow-400 md:text-7xl">Welcome To Daylibris</h1>
+                <span class="pt-4 pb-4 text-lg text-white md:text-xl">Le savoir, c'est le pouvoir</span>
+                <p class="mt-5 text-base text-white md:text-lg">
+                    Plongez dans un vaste éventail de ressources littéraires
+                    <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
+                    bibliothèque numérique.
+                </p>
+
+                <div class="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4">
+                    
+                    <a href="{{ route('register') }}"
+                        class="mt-4 md:mt-0 sm:text-center px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800">
+                        Register
+                    </a>
+                    <a href="{{ route('login') }}"
+                        class="mt-4 md:mt-0 px-6 py-3 font-semibold text-white bg-gradient-to-t from-red-600 to-red-400 mb-2  rounded cursor-pointer hover:bg-red-600 shadow-md shadow-red-800 ">
+                        Login
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="w-full md:w-3/4 pt-10 pr-8">
+                <img src="/storage/img/desk.png" alt="Bibliothèque"
+                    class="object-cover w-full h-full rounded-lg md:w-3/4">
+            </div>
+        </div>
+
+        <div class="relative p-4 overflow-hidden text-yellow-300 rounded-lg marquee">
+            <div class="overflow-hidden w-full">
+                <p class="marquee-text text-yellow-300  text-base md:text-lg whitespace-nowrap">
+                    Bienvenue à la bibliothèque numérique ! Apprenez, explorez, découvrez !
+                </p>
+            </div>
         </div>
 
     </div>
@@ -153,71 +190,8 @@
         }
     </style>
 
-    </div>
-
-    {{-- style of the swaying word of the bords --}}
-    {{-- <p class="mt-5 text-base text-white md:text-lg">
-        Plongez dans un vaste éventail de ressources littéraires
-        <br>et scientifiques pour soutenir vos études <br>et enrichir vos recherches à travers notre
-        bibliothèque numérique.
-    </p>
-    <style>
-        @keyframes marquee {
-            0% {
-                transform: translateX(100%);
-                opacity: 1;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-        }
-
-        .animate-marquee {
-            animation: marquee 20s linear infinite;
-        }
-
-        @media (max-width: 9000px) {
-            .animate-marquee {
-                animation-duration: 25s;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 1000px) {
-            .animate-marquee {
-                animation-duration: 20s;
-                font-size: 1rem;
-            }
-        }
-    </style>
-     
-
-    <script>
-        const marqueeContent = document.querySelector('.marquee-content');
-
-        window.addEventListener('load', () => {
-            marqueeContent.style.opacity = '1';
-        });
-
-        marqueeContent.addEventListener('animationiteration', () => {
-            marqueeContent.style.animation = 'none';
-            setTimeout(() => {
-                marqueeContent.style.animation = '';
-            }, 50);
-        });
-    </script> --}}
-    
-    
+    {{--  New script for swaying words--}}
+    {{-- ****** --}}
     <style>
         @keyframes marquee {
             0% {
@@ -229,7 +203,7 @@
         }
     
         .marquee-text {
-            animation: marquee 20s linear infinite;
+            animation: marquee 15s linear infinite;
             will-change: transform;
         }
     
@@ -239,7 +213,7 @@
     
         @media (min-width: 768px) {
             .marquee-text {
-                animation-duration: 18s;
+                animation-duration: 24s;
             }
         }
     
@@ -263,7 +237,8 @@
             });
         });
     </script>
- 
+    {{-- ***** --}}
+  {{--  end script for swaying words--}}
 
 
 </body>
