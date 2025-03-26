@@ -42,7 +42,7 @@
         <!-- PROFIL PICTURE -->
         <div class="mt-4">
             <label for="thumbnails" class="block mb-2 text-lg font-semibold text-gray-700">Profile Picture</label>
-            <input type="file" name="book_img" id="thumbnails" class="w-full p-3 text-gray-700 border border-gray-300 rounded-md file:border-0 file:bg-red-600 file:text-white file:rounded-md file:p-2 hover:file:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+            <input type="file" name="picture" id="thumbnails" class="w-full p-3 text-gray-700 border border-gray-300 rounded-md file:border-0 file:bg-red-600 file:text-white file:rounded-md file:p-2 hover:file:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
             @error('thumbnails')
                 <div class="mt-2 text-sm text-red-500">{{ $message }}</div>
             @enderror

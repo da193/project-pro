@@ -39,9 +39,11 @@ class RegisteredUserController extends Controller
         ]);
 
         // Gestion du fichier téléchargé
-        $path = null;
-        if ($request->hasFile('picture')) {
-            $file = $request->file('picture');
+        
+        $path = $request->hasFile('picture') ? $request->file('picture')->store('users', 'public') : 'default_image.jpg';
+
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
             $path = $file->store('users', 'public');
         }
     

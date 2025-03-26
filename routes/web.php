@@ -105,7 +105,7 @@ Route::get('livres/{id}/read', [LivreController::class, 'read'])->name('livres.r
 
 
 // abstract for the controller of my admin page
-Route::get('/Abstract', [HomeController::class, 'abstract'])->name('Home');
+Route::get('/Abstract', [HomeController::class, 'abstract'])->name('homme');
 Route::get('/Users', [UsersController::class, 'user'])->name('user');
 
 
