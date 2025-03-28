@@ -22,7 +22,7 @@
     <div class="flex items-center justify-between px-4 h-full max-w-7xl mx-auto">
         <div class="flex items-center">
             <!-- Logo -->
-            <img class="object-cover w-auto h-16 py-3 ml-2 md:ml-6 md:h-20 md:w-20" src="/storage/img/loog.png"
+            <img class="object-center w-auto h-16  py-3 ml-2 md:ml-6 md:h-20 md:w-20" src="/storage/img/loog.png"
                 alt="Logo">
         </div>
 
