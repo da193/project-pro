@@ -96,10 +96,10 @@
                 </style>
 
                 <div class="bg-slate-400 mx-5 my-4 rounded-md ">
-                    <div class="carousel relative  overflow-hidden h- flex justify-center items-center pr-4">
-                        <div class="carousel-images flex items-center transform w-[37vw]">
-                            <img src="/storage/img/desk.png" class="carousel-image active" alt="Image 1">
-                            <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 2">
+                    <div class="carousel relative  overflow-hidden h- flex justify-center items-center pr-4 ">
+                        <div class="carousel-images flex items-center transform w-[37vw] gap-5">
+                            <img src="/storage/img/desk.png" class="carousel-image active px-3" alt="Image 1">
+                            <img src="/storage/img/kiné.jpg" class="carousel-image inactive px-3" alt="Image 2">
                             <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 3">
                             <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 4">
                             <img src="/storage/img/desk.png" class="carousel-image inactive" alt="Image 5">

@@ -33,9 +33,9 @@
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
-                </svg>
+                </svg>j
             </button>
-
+ d
             <!-- Dropdown menu -->
             <div x-show="open" @click.outside="open = false"
                 class="absolute right-4 mt-2 w-48 bg-gradient-to-b from-red-200 to-red-300 rounded-md shadow-lg z-10">

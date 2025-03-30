@@ -36,7 +36,41 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+Route::middleware('auth', 'Admin')->group(function () {
+    // delete and update a book in admin
+
+Route::get('/delete_book/{id}', [AdminController::class, 'delete_book'])->name('delete_book');
+
+Route::get('/edit_book/{id}', [AdminController::class, 'edit_book'])->name('edit_book');
+
+Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
+
+// book options of which the admn control in 
+Route::get('/show_book', [AdminController::class, 'show_book'])->name('show_book');
+
+Route::get('/category_loads', [LivreController::class, 'category_loads'])->name('category_loads');
+
+Route::get('/add_category', [LivreController::class, 'add_category'])->name('add_category');
+
+// delete and update a category
+Route::get('/delete_category/{id}', [AdminController::class, 'cat_delete'])->name('cat_delete');
+
+Route::get('/update_category/{id}', [AdminController::class, 'edit_cat'])->name('edit_cat');
+
+Route::post('/edit_category/{id}', [AdminController::class, 'update_cat'])->name('update_cat');
+
+
+// 
+Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
+
+// add a category and showing up
+Route::get('/category_page', [AdminController::class, 'category_page'])->name('category_page');
+
+Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
+
+
+});
 
 // Route::get('/register', [RegisteredUserController::class, 'create'])->name('regist');
 Route::get('/student', [HomeController::class, 'home']) ->name('home');
@@ -51,12 +85,12 @@ Route::get('{/show_cat', [LivreController::class, 'showCat'])->name('categories'
 
 Route::get('/category/{id}', [LivreController::class, 'showBook'])->name('category.book');
 
-// book options of which the admn control in 
-Route::get('/show_book', [AdminController::class, 'show_book'])->name('show_book');
+// // book options of which the admn control in 
+// Route::get('/show_book', [AdminController::class, 'show_book'])->name('show_book');
 
-Route::get('/category_loads', [LivreController::class, 'category_loads'])->name('category_loads');
+// Route::get('/category_loads', [LivreController::class, 'category_loads'])->name('category_loads');
 
-Route::get('/add_category', [LivreController::class, 'add_category'])->name('add_category');
+// Route::get('/add_category', [LivreController::class, 'add_category'])->name('add_category');
 
 // afficher le search
 
@@ -66,29 +100,29 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 // item details
 Route::get('/details/{id}', [HomeController::class, 'details'])->name('details');
 
-// add a category and showing up
-Route::get('/category_page', [AdminController::class, 'category_page'])->name('category_page');
+// // add a category and showing up
+// Route::get('/category_page', [AdminController::class, 'category_page'])->name('category_page');
 
-Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
+// Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
 
-// delete and update a category
-Route::get('/delete_category/{id}', [AdminController::class, 'cat_delete'])->name('cat_delete');
+// // delete and update a category
+// Route::get('/delete_category/{id}', [AdminController::class, 'cat_delete'])->name('cat_delete');
 
-Route::get('/update_category/{id}', [AdminController::class, 'edit_cat'])->name('edit_cat');
+// Route::get('/update_category/{id}', [AdminController::class, 'edit_cat'])->name('edit_cat');
 
-Route::post('/edit_category/{id}', [AdminController::class, 'update_cat'])->name('update_cat');
+// Route::post('/edit_category/{id}', [AdminController::class, 'update_cat'])->name('update_cat');
 
 
-// 
-Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
+// // 
+// Route::get('admin/page', [AdminController::class, 'adminPage'])->name('adminpage');
 
-// delete and update a book in admin
+// // delete and update a book in admin
 
-Route::get('/delete_book/{id}', [AdminController::class, 'delete_book'])->name('delete_book');
+// Route::get('/delete_book/{id}', [AdminController::class, 'delete_book'])->name('delete_book');
 
-Route::get('/edit_book/{id}', [AdminController::class, 'edit_book'])->name('edit_book');
+// Route::get('/edit_book/{id}', [AdminController::class, 'edit_book'])->name('edit_book');
 
-Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
+// Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
 
 // student registration
 Route::get('/pre-inscription', [AdminController::class, 'inscription'])->name('pre-inscription');
@@ -113,3 +147,5 @@ Route::get('/Users', [UsersController::class, 'user'])->name('user');
 Route::get('/About', [HomeController::class, 'about'])->name('about');
 //contact page
 Route::get('/Contact', [HomeController::class, 'contact'])->name('contact');
+
+require __DIR__.'/auth.php';
