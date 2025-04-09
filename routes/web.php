@@ -125,7 +125,7 @@ Route::get('/details/{id}', [HomeController::class, 'details'])->name('details')
 // Route::post('/update_book/{id}', [AdminController::class, 'update_book'])->name('update_book');
 
 // student registration
-Route::get('/pre-inscription', [AdminController::class, 'inscription'])->name('pre-inscription');
+// Route::get('/pre-inscription', [AdminController::class, 'inscription'])->name('pre-inscription');
 
 
 // my principal dashboard page that connect to all the other page and the first view page
